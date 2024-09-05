@@ -1,0 +1,195 @@
+*{
+    font-family: Helvetica, sans-serif;
+    padding: 0;
+    margin: 0;
+}
+h1{
+    color: var(--dimgray);
+}
+body{
+    background-color: var(--lightgray);
+}
+.navbar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5rem;
+    z-index: 10;
+    background-color: var(--white);   
+    box-shadow: 0 0.5rem 0.5rem rgba(0,0,0,0.4);
+    
+    
+}
+.navbar__content{
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 2rem 1rem 2rem;
+    align-items: center;
+}
+.navbar .navbar__content .navbar__burguer,
+.navbar .navbar__content .navbar__burguer .navbar__links,
+.navbar .navbar__content .sgi{
+    display: none;
+}
+
+.navbar .navbar__content .navbar__burguer{
+    display: flex;
+    align-items: center;
+}
+.navbar .navbar__content .navbar__burguer .burguer{
+    width: 3rem;
+    height: 3rem;
+    cursor: pointer;
+    border: 0.2rem solid var(--dimgray);
+    border-radius: 0.6rem;
+    background: transparent;
+    box-shadow: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.5);
+}
+.navbar .navbar__content .navbar__burguer.active .burguer{
+    width: 3rem;
+    height: 3rem;
+    cursor: pointer;
+    border: 0.2rem solid var(--dimgray);
+    box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.4);
+}
+.navbar .navbar__content .navbar__burguer .burguer .linha{ 
+    width: 1.8rem;
+    height: 0.25rem;
+    background-color: var(--dimgray);
+    display: block;
+    margin: 0.45rem auto;
+    position: relative;
+    transform-origin: center;
+    border-radius: 0.1rem;
+}
+.navbar .navbar__content .navbar__burguer.active .burguer .linha:nth-child(1){
+    transform: translateY(0.7rem) rotate(-45deg);
+    background-color: var(--dimgray);
+    transition: 0.3s;
+    width: 2.5rem;
+    height: 0.25rem;
+    box-shadow: 0 0.2rem 0.5rem rgba(0,0,0,0.2);
+
+}
+.navbar .navbar__content .navbar__burguer.active .burguer .linha:nth-child(3){
+    transform: translateY(-0.7rem) rotate(45deg);
+    background-color: var(--dimgray);
+    transition: 0.3s;
+    width: 2.5rem;
+    height: 0.3rem;
+    box-shadow: 0 0.2rem 0.5rem rgba(0,0,0,0.2);
+}
+.navbar .navbar__content .navbar__burguer.active .burguer .linha:nth-child(2){
+    width: 0;
+}
+.navbar .navbar__content .navbar__burguer.active .navbar__links{
+    display: flex;
+    flex-direction: column;
+    background-image: linear-gradient(0deg, rgb(0, 0, 0), var(--deepskyblue));
+    width: 20rem;
+    height: 100rem;
+    position: absolute;
+    top: 0rem;
+    left: 0;
+    padding: 0rem 0;
+    box-shadow: 0.5rem 0rem 0.5rem rgba(0, 0, 0, 0.6);
+    z-index: -1;
+    padding-top: 5rem;
+}
+.navbar .navbar__content .navbar__burguer.active .navbar__links li{
+    margin-right: 0;
+}
+.navbar .navbar__content .navbar__burguer.active .navbar__links a{
+    padding: 1.5rem 2rem;
+    display: block;
+    text-align: start;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--white);
+    text-decoration: none;
+
+}
+.navbar .navbar__content .navbar__burguer.active .navbar__links a:hover{
+    font-size: 1.7rem;
+    color: var(--lightgray);
+}
+
+.navbar__burguer.active .sgi{
+    display: flex;
+    font-size: 2rem;
+    z-index: -1;
+    color: var(--white);
+    padding-left: 2rem;
+
+}
+
+
+.navbar__exit{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+.user__information{
+    color: var(--dimgray);
+    font-size: 1.5rem;
+    padding-right: 2rem;
+    position: relative;
+    width: 300px;
+    display: flex;
+    justify-content: end;
+
+}
+.navbar__exit a img{
+    width: 100%;
+    height: auto;
+    display: block
+}
+.user__information img{
+    width: 2rem;
+    padding-right: 2rem;
+}
+.info{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    text-align: start;
+    flex-direction: column;
+    flex-flow: column;
+    top: 3.5rem;
+    right: 3rem;
+    width: 20rem;
+    height: auto;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    background-color: var(--gainsboro);
+    box-shadow: 0rem 0.5rem 0.9rem rgba(0, 0, 0, 0.8);
+    border-radius: 0.5rem;
+    padding-top: 1rem;
+}
+.info label{
+    padding: 0.5rem 0;
+}
+.user__information:hover .info{
+    opacity: 1;
+}
+    :root{
+        --white: #ffffff;
+        --gray: #d9d9d9;
+        --black: #000000;
+
+
+        --deepskyblue: #00B3FF;
+        --DodgerBlue: #0072C2;
+        --gainsboro: #E3E4E8;
+        --dimgray: #4D4D4D;
+        --lightgray: #CCCCCC;
+      
+        --color-header: #f5f4fb;
+      
+        --sombra-primary: 0 0.4rem 0.5rem rgba(0, 0, 0, 0.1);
+      
+        --font-family: 'DM Sans', sans-serif;
+    
+    
+    }
