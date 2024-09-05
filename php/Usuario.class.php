@@ -34,9 +34,7 @@ class Usuario{
         if($sql->rowCount() > 0){
             $array = $sql->fetch();
         }
-
         return $array;
     }
 }
-
 ?>
