@@ -20,9 +20,7 @@ if(isset($_POST['email']) && !empty($_POST['email']) && isset($_POST['senha']) &
         header("Location: ../login.php?error=1");
     }
 
-
 }else{
     header("Location: ../login.php?error=1");
 }
-
 ?>
