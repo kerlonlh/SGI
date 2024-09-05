@@ -14,7 +14,4 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])){
 }else{
     header('Location: ../login.php');
 }
-
-
-
 ?>
