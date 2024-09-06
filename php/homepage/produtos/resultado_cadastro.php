@@ -20,7 +20,6 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
             $sql = "INSERT INTO `produtos`(`produto`, `marca`) VALUES ('$produto','$marca')";
         
             $sql = $pdo->prepare($sql);
-            
 
             if($sql->execute()){
                 echo "$produto cadastrado com sucesso!";
