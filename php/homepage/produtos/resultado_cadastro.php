@@ -1,3 +1,7 @@
+<?php
+require '../verifica.php';
+if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +13,7 @@
 <body>
     <section>
         <?php
-            include "../../conexao.php";
+            include $_SERVER['DOCUMENT_ROOT'] . "/sgi/php/conexao.php";
             $produto = $_POST['produto'];
             $preco = $_POST['preco'];
             $quantidade = $_POST['quantidade'];
@@ -21,7 +25,6 @@
 
             if($sql->execute()){
                 echo "$produto cadastrado com sucesso!";
-                header("Location: ../index.php?pg=produtos");
             }else{
                 echo "$produto não foi cadastrado!";
             }
@@ -29,3 +32,5 @@
     </section>
 </body>
 </html>
+
+<?php else: header("Location: /sgi/login.php"); endif; ?>

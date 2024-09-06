@@ -12,7 +12,7 @@
     <section>
     
         <p>Cadastrar produtos</p>
-        <form action="./produtos/resultado_cadastro.php" method="POST">
+        <form action="index.php?pg=newprodutos" method="POST">
             <div>
                 <label for="nome">Nome do produto</label>
                 <input type="text" name="produto" required>
@@ -29,6 +29,19 @@
                 <input type="submit">
             </div>
         </form>
+
+        <?php
+            $pg = "";
+                if(isset($_GET['pg']) && !empty($_GET['pg'])){
+                    $pg = $_GET['pg'];
+                }
+            switch($pg){
+                case 'newprodutos': require './resultado_cadastro.php'; break;
+            }   
+
+
+        
+        ?>
     </section>
 </body>
 </html>

@@ -53,7 +53,8 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
             $pg = $_GET['pg'];
         }
         switch($pg){
-            case 'produtos': require './produtos.php'; break;
+            case 'produtos': require './produtos/produtos.php'; break;
+            case 'newprodutos': require './produtos/resultado_cadastro.php'; break;
             case 'entradas': require './entradas.php'; break;
             case 'saidas': require './saidas.php'; break;
             case 'vendas': require './vendas.php'; break;
