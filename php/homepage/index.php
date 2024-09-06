@@ -64,7 +64,10 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
             //saidas
             case 'saidas': require './saidas.php'; break;
             case 'vendas': require './vendas.php'; break;
-            case 'fornecedores': require './fornecedores.php'; break;
+            //fornecedores
+            case 'fornecedores': require './fornecedores/fornecedores.php'; break;
+            case 'cadastrar-fornecedor': require './fornecedores/cadastro_fornecedor.php'; break;
+            case 'resultado-cadastro-fornecedor': require './fornecedores/resultado_fornecedor.php'; break;
             default: require './home.php';
             }        
             ?> 
