@@ -54,20 +54,6 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
             </div>
         </div>
 
-        <?php
-            $pg = "";
-        if(isset($_GET['pg']) && !empty($_GET['pg'])){
-            $pg = $_GET['pg'];
-        }
-        switch($pg){
-            case 'produtos': require './produtos/produtos.php'; break;
-            case 'entradas': require './entradas.php'; break;
-            case 'saidas': require './saidas.php'; break;
-        }
-
-
-        
-        ?>
     </section>
 </body>
 </html>

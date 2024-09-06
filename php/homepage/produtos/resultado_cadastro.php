@@ -15,10 +15,9 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
         <?php
             include $_SERVER['DOCUMENT_ROOT'] . "/sgi/php/conexao.php";
             $produto = $_POST['produto'];
-            $preco = $_POST['preco'];
-            $quantidade = $_POST['quantidade'];
+            $marca = $_POST['marca'];
 
-            $sql = "INSERT INTO `produtos`(`produto`, `preco`, `quantidade`) VALUES ('$produto','$preco','$quantidade')";
+            $sql = "INSERT INTO `produtos`(`produto`, `marca`) VALUES ('$produto','$marca')";
         
             $sql = $pdo->prepare($sql);
             
@@ -30,6 +29,8 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
             }
         ?>
     </section>
+    <a href="index.php?pg=cadastrar-produtos"><button>CADASTRAR NOVO PRODUTO</button></a>
+    <a href="index.php?pg=produtos"><button>VISUALIZAR PRODUTOS</button></a>
 </body>
 </html>
 
