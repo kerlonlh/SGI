@@ -53,16 +53,21 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
             $pg = $_GET['pg'];
         }
         switch($pg){
+            //Produtos
             case 'produtos': require './produtos/produtos.php'; break;
             case 'resultado-produtos': require './produtos/resultado_cadastro.php'; break;
             case 'cadastrar-produtos': require './produtos/cadastro_produto.php'; break;
-            case 'entradas': require './entradas.php'; break;
+            //Entradas
+            case 'entradas': require './entradas/entradas.php'; break;
+            case 'cadastrar-entrada-produtos': require './entradas/cadastro_entrada.php'; break;
+            case 'resultado-entrada-produtos': require './entradas/resultado_entrada.php'; break;
+            //saidas
             case 'saidas': require './saidas.php'; break;
             case 'vendas': require './vendas.php'; break;
             case 'fornecedores': require './fornecedores.php'; break;
             default: require './home.php';
-        }
-        ?> 
+            }        
+            ?> 
         </div>
     </main>
     <script src="/sgi/scripts/index.js"></script>
