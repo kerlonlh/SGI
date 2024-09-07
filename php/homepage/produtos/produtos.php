@@ -33,6 +33,7 @@
                 <th>Código</th>
                 <th>Produto</th>
                 <th>Marca</th>
+                <th>Funções</th>
             </tr>
         </thead>
         <tbody>
@@ -46,6 +47,10 @@
                             <th>$id</th>
                             <td>$produto</td>
                             <td>$marca</td>
+                            <td>
+                                <a href='#'>Editar</a>
+                                <a href='#'>Excluir</a>
+                            </td>
                         </tr>";
                 }
             ?>
