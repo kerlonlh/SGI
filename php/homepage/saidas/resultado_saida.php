@@ -7,7 +7,7 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Produtos</title>
+    <title>SGI</title>
     <link rel="stylesheet" href="/sgi/css/components/produtos.css">
 </head>
 <body>
