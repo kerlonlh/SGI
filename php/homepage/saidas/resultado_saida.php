@@ -32,8 +32,8 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
 
         ?>
     </section>
-    <a href="index.php?pg=cadastrar-entrada-produtos"><button>CADASTRAR NOVA ENTRADA PRODUTO</button></a>
-    <a href="index.php?pg=entradas"><button>VISUALIZAR ENTRADA DE PRODUTOS</button></a>
+    <a href="index.php?pg=cadastrar-saida-produtos"><button>CADASTRAR NOVA SAÍDA DE PRODUTO</button></a>
+    <a href="index.php?pg=saidas"><button>VISUALIZAR SAÍDA DE PRODUTOS</button></a>
 </body>
 </html>
 

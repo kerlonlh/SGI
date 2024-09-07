@@ -62,8 +62,11 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
             case 'cadastrar-entrada-produtos': require './entradas/cadastro_entrada.php'; break;
             case 'resultado-entrada-produtos': require './entradas/resultado_entrada.php'; break;
             //saidas
-            case 'saidas': require './saidas.php'; break;
-            case 'vendas': require './vendas.php'; break;
+            case 'saidas': require './saidas/saidas.php'; break;
+            case 'cadastrar-saida-produtos': require './saidas/cadastro_saida.php'; break;
+            case 'resultado-saida-produtos': require './saidas/resultado_saida.php'; break;
+            //vendas
+            case 'vendas': require './vendas/vendas.php'; break;
             //fornecedores
             case 'fornecedores': require './fornecedores/fornecedores.php'; break;
             case 'cadastrar-fornecedor': require './fornecedores/cadastro_fornecedor.php'; break;

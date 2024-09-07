@@ -9,7 +9,7 @@
 </head>
 <body>
     <section>
-        <p>Cadastrar produtos</p>
+        <p>Cadastrar fornecedores</p>
         <form action="index.php?pg=resultado-cadastro-fornecedor" method="POST">
             <div>
                 <label for="nome">Razão social</label>
