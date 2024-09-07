@@ -45,7 +45,7 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
             </div>
         </div>
     </nav>
-    <main>  
+    <main class="main">  
         <div>
         <?php
             $pg = "";
@@ -76,6 +76,17 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
             ?> 
         </div>
     </main>
+    <footer class="footer">
+        <div class="footer__content">
+            <ul class="footer__contact">
+                <li><a href="https://www.linkedin.com/in/kerlon-leonardi-hinterholz-958872285/"><img class="linkedin" src="/sgi/assets/linkedin.svg" alt="Linkedin"></a></li>
+                <li><a href="https://github.com/kerlonlh"><img class="github" src="/sgi/assets/github.svg" alt="GitHub"></a></li>
+                <li><a href="https://instagram.com/hinterholz_kerlon?igshid=OGQ5ZDc2ODk2ZA=="><img class="instagram" src="/sgi/assets/instagram.svg" alt="Instagram"></a></li>
+                <li><a href="https://wa.me/55996560626"><img class="whatsapp" src="/sgi/assets/whatsapp.svg" alt="whatsapp"></a></li>
+            </ul>
+            <p class="footer__copyright">© 2024 Kerlon Hinterholz. Todos os direitos reservados.</p>
+        </div>
+    </footer>
     <script src="/sgi/scripts/index.js"></script>
 </body>
 </html>

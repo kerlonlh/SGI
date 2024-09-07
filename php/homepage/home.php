@@ -53,7 +53,6 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
                 <p>Controle de saída de produtos do estoque</p>
             </div>
         </div>
-
     </section>
 </body>
 </html>

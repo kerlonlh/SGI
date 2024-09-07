@@ -18,9 +18,8 @@ body{
     z-index: 10;
     background-color: var(--white);   
     box-shadow: 0 0.5rem 0.5rem rgba(0,0,0,0.4);
-    
-    
 }
+
 .navbar__content{
     display: flex;
     justify-content: space-between;
@@ -173,23 +172,70 @@ body{
 .user__information:hover .info{
     opacity: 1;
 }
-    :root{
-        --white: #ffffff;
-        --gray: #d9d9d9;
-        --black: #000000;
 
 
-        --deepskyblue: #00B3FF;
-        --DodgerBlue: #0072C2;
-        --gainsboro: #E3E4E8;
-        --dimgray: #4D4D4D;
-        --lightgray: #CCCCCC;
-      
-        --color-header: #f5f4fb;
-      
-        --sombra-primary: 0 0.4rem 0.5rem rgba(0, 0, 0, 0.1);
-      
-        --font-family: 'DM Sans', sans-serif;
+
+.footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 5rem;
+    background-color: var(--white); 
+    box-shadow: 0 -0.2rem 0.5rem rgba(0,0,0,0.5);
+    text-align: center;
     
+}
+.footer__content{
+    display: block;
+}
+.footer__content ul li{
+    display: inline-block;
+    padding: 1rem 1rem 0.3rem 1rem;
+}
+footer .footer__content ul li img{
+    width: 25px;
     
-    }
+}
+footer .footer__content ul li img:hover{
+    width: 26px;
+   background-color: var(--gainsboro);
+}
+.linkedin:hover{
+    border-radius: 0.1rem;
+}
+.github:hover{
+    border-radius: 2rem;
+}
+.instagram:hover{
+    border-radius: 0.4rem;
+}
+.whatsapp:hover{
+    border-radius: 2rem 2rem 2rem 0.5rem;
+}
+
+
+
+.main.active {
+    padding-left: 20rem; 
+}
+:root{
+    --white: #ffffff;
+    --gray: #d9d9d9;
+    --black: #000000;
+
+
+    --deepskyblue: #00B3FF;
+    --DodgerBlue: #0072C2;
+    --gainsboro: #E3E4E8;
+    --dimgray: #4D4D4D;
+    --lightgray: #CCCCCC;
+    
+    --color-header: #f5f4fb;
+    
+    --sombra-primary: 0 0.4rem 0.5rem rgba(0, 0, 0, 0.1);
+    
+    --font-family: 'DM Sans', sans-serif;
+
+
+}
