@@ -35,21 +35,21 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
                 <div>
                     <img src="/sgi/assets/icon-box.png" alt="">
                 </div>
-                <a href="index.php?pg=produtos"><button>Produtos</button></a>
+                <a href="index.php?pg=produtos"><button class="btn">Produtos</button></a>
                 <p>Cadastro de produtos</p>
             </div>
             <div class="home__func">
                 <div>
                     <img src="/sgi/assets/icon-box-with-arrow.png" alt="">
                 </div>
-                <a href="index.php?pg=entradas"><button>Entradas</button></a>
+                <a href="index.php?pg=entradas"><button class="btn">Entradas</button></a>
                 <p>Controle de entrada de produtos no estoque</p>
             </div>
             <div class="home__func">
                 <div>
                     <img src="/sgi/assets/icon-box-with-arrow-up.png" alt="">
                 </div>
-                <a href="index.php?pg=saidas"><button>Saídas</button></a>
+                <a href="index.php?pg=saidas"><button class="btn">Saídas</button></a>
                 <p>Controle de saída de produtos do estoque</p>
             </div>
         </div>

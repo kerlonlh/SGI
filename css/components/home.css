@@ -39,12 +39,16 @@
     padding: 1.2rem 0 0 0;
     text-align: center;
 }
+.home__item:hover,
+.home__func:hover{
+    box-shadow: 0rem 0.6rem 1rem rgba(0, 0, 0, 1);
+}
 .home__func img{
     text-align: center;
     height: 4rem;
 }
 
-.home__func button{
+.btn{
     background-image: linear-gradient(to bottom, #00B3FF, #0072C2);
     border: 0px;
     outline: 0;
@@ -54,10 +58,13 @@
     border-radius: 0.5rem;
     box-shadow: 0rem 0.4rem 0.9rem rgba(0, 0, 0, 0.7);
     font-size: 1.4rem;
+    cursor: pointer;
 }
-.home__func button:hover{
-    width: 10rem;
+.btn:hover{
+    width: 10.1rem;
     height: 2.5rem;
+    background-image: linear-gradient(to bottom, #0072C2, #005998);
+    box-shadow: 0rem 0.4rem 1rem rgba(0, 0, 0, 0.9);
 }
 .home__func p{
     padding: 1rem 2rem 0 2rem;
