@@ -48,7 +48,7 @@
                             <td>$produto</td>
                             <td>$marca</td>
                             <td>
-                                <a href='#'>Editar</a>
+                                <a href='index.php?pg=editar-produtos=$id'>Editar</a>
                                 <a href='#'>Excluir</a>
                             </td>
                         </tr>";
