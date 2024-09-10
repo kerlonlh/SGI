@@ -48,9 +48,12 @@
                             <td>$produto</td>
                             <td>$marca</td>
                             <td>
-                                <a href='index.php?pg=editar-produtos=$id'>Editar</a>
-                                <a href='#'>Excluir</a>
+                                <form action='index.php?pg=editar-produtos' method='POST'>
+                                    <input type='hidden' name='id' value='$id'>
+                                    <button type='submit'>Editar</button>
+                                </form>
                             </td>
+                            <td><a href='#'><button type='submit'>Excluir</button></a></td>
                         </tr>";
                 }
             ?>

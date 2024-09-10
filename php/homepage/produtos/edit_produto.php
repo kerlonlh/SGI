@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,32 +10,44 @@
     <?php
     include $_SERVER['DOCUMENT_ROOT'] . "/sgi/php/conexao.php";
 
-    $sql = "SELECT * FROM produtos WHERE id = 72";
-    $dados = $pdo->prepare($sql);
-    $linha = $dados->fetch(PDO::FETCH_ASSOC);
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['id'])) {
+        $id = $_POST['id'];
+
+        $sql = "SELECT * FROM produtos WHERE id = :id";
+        $dados = $pdo->prepare($sql);
+
+        $dados->execute([':id' => $id]);
+
+        $linha = $dados->fetch(PDO::FETCH_ASSOC);
+
+        if ($linha) {
+    ?>
+            <section>
+                <p>Atualizar cadastro de produtos</p>
+                <form action="index.php?pg=resultado-edicao-produtos" method="POST">
+                    <div>
+                        <label for="nome">Nome do produto</label>
+                        <input type="text" name="produto" required value="<?php echo htmlspecialchars($linha['produto']); ?>">
+                    </div>
+                    <div>
+                        <label for="marca">Marca do produto</label>
+                        <input type="text" name="marca" required value="<?php echo htmlspecialchars($linha['marca']); ?>">
+                    </div>
+                    <div>
+                        <input type="hidden" name="id" value="<?php echo htmlspecialchars($id); ?>">
+                        <input type="submit" value="Salvar alterações">
+                    </div>
+                </form>
+            </section>
+    <?php
+        } else {
+            echo "<p>Produto não encontrado.</p>";
+        }
+    } else {
+        echo "<p>ID do produto não fornecido.</p>";
+    }
     ?>
 
-    <section>
-        <p>Atualizar cadastro de produtos</p>
-        <form action="index.php?pg=resultado-edicao-produtos" method="POST">
-            <div>
-                <label for="nome">Nome do produto</label>
-                <input type="text" name="produto" required value="<?php echo $linha['nome']; ?>">
-            </div>
-            <div>
-                <label for="nome">Marca do produto</label>
-                <input type="text" name="marca" required value="<?php echo $linha['marca']; ?>">
-            </div>
-            <div>
-                <input type="submit" values="Salvar alterações">
-            </div>
-        </form>
-
-    </section>
-
-
-    
-
+    <a href="index.php?pg=produtos"><button>VOLTAR</button></a>
 </body>
 </html>
-

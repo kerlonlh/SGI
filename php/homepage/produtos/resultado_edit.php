@@ -14,20 +14,25 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
     <section>
         <?php
             include $_SERVER['DOCUMENT_ROOT'] . "/sgi/php/conexao.php";
-            $produto = $_POST['produto'];
-            $marca = $_POST['marca'];
+        
+            if (isset($_POST['id'], $_POST['produto'], $_POST['marca'])) {
+                $id = $_POST['id'];
+                $produto = $_POST['produto'];
+                $marca = $_POST['marca'];
 
-            $sql = "UPDATE `produtos` SET `produto` = `$produto`, `marca` = `$marca` WHERE id)";
-            $sql = $pdo->prepare($sql);
+                $sql = "UPDATE produtos SET produto = :produto, marca = :marca WHERE id = :id";
+                $stmt = $pdo->prepare($sql);
 
-            if($sql->execute()){
-                echo "$produto atualizado com sucesso!";
-            }else{
-                echo "$produto não foi atualizado!";
+                if($stmt->execute([':produto' => $produto, ':marca' => $marca, ':id' => $id])){
+                    echo "$produto atualizado com sucesso!";
+                } else {
+                    echo "$produto não foi atualizado!";
+                }
+            } else {
+                echo "Dados insuficientes para atualizar o produto.";
             }
         ?>
     </section>
-    <a href="index.php?pg=cadastrar-produtos"><button>CADASTRAR NOVO PRODUTO</button></a>
     <a href="index.php?pg=produtos"><button>VISUALIZAR PRODUTOS</button></a>
 </body>
 </html>
