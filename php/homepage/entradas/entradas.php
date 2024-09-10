@@ -5,53 +5,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SGI</title>
-    <link rel="stylesheet" href="/sgi/css/components/produtos.css">
+    <link rel="stylesheet" href="/sgi/css/components/entradas.css">
 </head>
 <body>
-    <section>
-
-        <a href="index.php?pg=cadastrar-entrada-produtos"><button>CADASTRAR ENTRADA DE PRODUTO</button></a>
-        <a href="index.php?pg=home"><button>PÁGINA INICIAL</button></a>
-    </section>
-
     <?php
         function inverte_data($data){
             $d = explode ('-', $data);
             $escreve = $d[2] . "/" . $d[1] . "/" . $d[0];
             return $escreve;
         }
-
         $pesquisa = $_POST['buscar'] ?? '';
 
         include $_SERVER['DOCUMENT_ROOT'] . "/sgi/php/conexao.php";
 
-        $sql = "SELECT * FROM entrada_produtos WHERE id LIKE :pesquisa OR id_produto LIKE :pesquisa OR preco_custo LIKE :pesquisa OR preco_venda LIKE :pesquisa OR data_fabricacao LIKE :pesquisa OR data_validade LIKE :pesquisa OR data_entrada LIKE :pesquisa OR quantidade LIKE :pesquisa OR id_fornecedor LIKE :pesquisa" ;
+        $sql = "SELECT * FROM entrada_produtos
+        JOIN produtos ON entrada_produtos.id_produto = produtos.id
+        WHERE 
+        id_produto LIKE :pesquisa 
+        OR preco_custo LIKE :pesquisa 
+        OR preco_venda LIKE :pesquisa 
+        OR data_fabricacao LIKE :pesquisa 
+        OR data_validade LIKE :pesquisa 
+        OR data_entrada LIKE :pesquisa 
+        OR quantidade LIKE :pesquisa 
+        OR id_fornecedor LIKE :pesquisa
+        OR produtos.produto LIKE :pesquisa 
+        OR produtos.marca LIKE :pesquisa ";
 
         $dado = $pdo->prepare($sql);
         $dado->execute([':pesquisa' => "%$pesquisa%"]);
     ?>
-    <form action="index.php?pg=entradas" method="POST">
-        <input type="search" placeholder="Pesquisar entrada de produto" name="buscar" autofocus>
-        <button type="submit">Pesquisar entrada de produto</button>
-    </form>
+    <section class="section__top">
+        <form class="section__form" action="index.php?pg=entradas" method="POST">
+            <input type="search" placeholder="Pesquisar entrada de produto" name="buscar" autofocus>
+            <button class="btn" type="submit">Pesquisar produto</button>
+        </form>
+        <a href="index.php?pg=cadastrar-entrada-produtos"><button class="btn">Cadastrar entrada de produto</button></a>
+        <a href="index.php?pg=home"><button class="btn">Página inicial</button></a>
+    </section>
     <table>
         <thead>
             <tr>
-                <th>Código</th>
-                <th>Código do Produto</th>
-                <th>Preço de custo</th>
-                <th>Preço de venda</th>
-                <th>Data de fabricação</th>
-                <th>Data de validade</th>
-                <th>Data de entrada</th>
+                <th>Código <br>do Produto</th>
+                <th>Produto</th>
+                <th>Marca</th>
+                <th>Preço <br>de custo</th>
+                <th>Preço <br>de venda</th>
+                <th>Data de<br> fabricação</th>
+                <th>Data de<br> validade</th>
+                <th>Data de<br> entrada</th>
                 <th>Quantidade</th>
-                <th>Código do fornecedor</th>
+                <th>Código do<br> fornecedor</th>
             </tr>
         </thead>
         <tbody>
             <?php
                 while ($linha = $dado->fetch(PDO::FETCH_ASSOC)){
-                    $id = $linha['id'];
                     $id_produto = $linha['id_produto'];
                     $preco_custo = $linha['preco_custo'];
                     $preco_venda = $linha['preco_venda'];
@@ -60,6 +69,8 @@
                     $data_entrada = $linha['data_entrada'];
                     $quantidade = $linha['quantidade'];
                     $id_fornecedor = $linha['id_fornecedor'];
+                    $produto = $linha['produto'];
+                    $marca = $linha['marca'];
 
 
                     $data_fabricacao = inverte_data($data_fabricacao);
@@ -67,8 +78,9 @@
                     $data_entrada = inverte_data($data_entrada);
 
                     echo "<tr>
-                            <th>$id</th>
                             <td>$id_produto</td>
+                            <td>$produto</td>
+                            <td>$marca</td>
                             <td>$preco_custo</td>
                             <td>$preco_venda</td>
                             <td>$data_fabricacao</td>
