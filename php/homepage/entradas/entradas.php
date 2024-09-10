@@ -56,11 +56,14 @@
                 <th>Data de<br> entrada</th>
                 <th>Quantidade</th>
                 <th>Código do<br> fornecedor</th>
+                <th>Editar</th>
+                <th>Excluir</th>
             </tr>
         </thead>
         <tbody>
             <?php
                 while ($linha = $dado->fetch(PDO::FETCH_ASSOC)){
+                    $id_entrada = $linha['id_entrada_produtos'];
                     $id_produto = $linha['id_produto'];
                     $preco_custo = $linha['preco_custo'];
                     $preco_venda = $linha['preco_venda'];
@@ -88,6 +91,13 @@
                             <td>$data_entrada</td>
                             <td>$quantidade</td>
                             <td>$id_fornecedor</td>
+                            <td>
+                                <form action='index.php?pg=editar-entrada-produtos' method='POST'>
+                                    <input type='hidden' name='id_entrada_produtos' value='$id_entrada'>
+                                    <button type='submit'>Editar</button>
+                                </form>
+                            </td>
+                            <td><a href='#'><button type='submit'>Excluir</button></a></td>
                         </tr>";
                 }
             ?>
