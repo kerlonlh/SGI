@@ -211,10 +211,12 @@ footer .footer__content ul li img:hover{
 .whatsapp:hover{
     border-radius: 2rem 2rem 2rem 0.5rem;
 }
+
+/* Habilitar quando estiver escalonado
 .main.active {
     padding-left: 20rem; 
 }
-
+*/
 :root{
     --white: #ffffff;
     --gray: #d9d9d9;

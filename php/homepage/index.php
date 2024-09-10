@@ -65,7 +65,7 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
             case 'cadastrar-entrada-produtos': require './entradas/cadastro_entrada.php'; break;
             case 'resultado-entrada-produtos': require './entradas/resultado_entrada.php'; break;
             case 'editar-entrada-produtos': require './entradas/edit_entrada.php'; break;
-            case 'resultado-edicao-entrada': require './entradas/resultado_edit_entrada.php'; break;
+            case 'resultado-edicao-entradas': require './entradas/resultado_edit_entrada.php'; break;
             //saidas
             case 'saidas': require './saidas/saidas.php'; break;
             case 'cadastrar-saida-produtos': require './saidas/cadastro_saida.php'; break;

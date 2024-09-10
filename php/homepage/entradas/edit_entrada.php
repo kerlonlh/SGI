@@ -11,7 +11,7 @@
     include $_SERVER['DOCUMENT_ROOT'] . "/sgi/php/conexao.php";
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['id_entrada_produtos'])) {
         $id_entrada = $_POST['id_entrada_produtos'];
-        
+
         $sql = "SELECT * FROM entrada_produtos WHERE id_entrada_produtos = :id_entrada_produtos";
         $dados = $pdo->prepare($sql);
 
@@ -57,7 +57,7 @@
                     <input type="number" name="id_fornecedor" required value="<?php echo htmlspecialchars($linha['id_fornecedor']); ?>">
                 </div>
                 <div>
-                    <input type="hidden" name="id" value="<?php echo htmlspecialchars($id_entrada); ?>">
+                    <input type="hidden" name="id_entrada_produtos" value="<?php echo htmlspecialchars($id_entrada); ?>">
                     <input type="submit" value="Salvar alterações">
                 </div>
                 </form>
