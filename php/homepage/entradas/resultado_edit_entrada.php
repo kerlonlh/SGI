@@ -1,5 +1,5 @@
 <?php
-require '../../verifica.php';
+require $_SERVER['DOCUMENT_ROOT'] . "/sgi/php/verifica.php";
 if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
 
 <!DOCTYPE html>
