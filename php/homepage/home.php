@@ -56,4 +56,4 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
     </section>
 </body>
 </html>
-<?php else: header("Location: /sgi/login.php"); endif; ?>
+<?php else: header("Location: /sgi/index.php"); endif; ?>

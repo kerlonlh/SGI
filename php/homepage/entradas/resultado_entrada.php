@@ -1,5 +1,5 @@
 <?php
-require '../verifica.php';
+require '../../verifica.php';
 if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
 
 <!DOCTYPE html>
@@ -32,8 +32,6 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
             }else{
                 echo "$id_produto não foi cadastrado!";
             }
-
-
         ?>
     </section>
     <a href="index.php?pg=cadastrar-entrada-produtos"><button>CADASTRAR NOVA ENTRADA PRODUTO</button></a>
@@ -41,4 +39,4 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
 </body>
 </html>
 
-<?php else: header("Location: /sgi/login.php"); endif; ?>
+<?php else: header("Location: /sgi/index.php"); endif; ?>

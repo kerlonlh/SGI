@@ -12,6 +12,6 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])){
     $emailUser = $listLogged['email'];
 
 }else{
-    header('Location: ../login.php');
+    header('Location: ../index.php');
 }
 ?>

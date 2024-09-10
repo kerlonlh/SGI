@@ -1,3 +1,6 @@
+<?php
+require '../../verifica.php';
+if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -27,4 +30,6 @@
     </section>
 </body>
 </html>
+
+<?php else: header("Location: /sgi/index.php"); endif; ?>
 

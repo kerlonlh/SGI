@@ -14,13 +14,13 @@ if(isset($_POST['email']) && !empty($_POST['email']) && isset($_POST['senha']) &
         if(isset($_SESSION['idUser'])){
             header("Location: homepage/index.php?pg=home");
         }else{
-            header("Location: ../login.php");
+            header("Location: ../index.php");
         }
     }else{
-        header("Location: ../login.php?error=1");
+        header("Location: ../index.php?error=1");
     }
 
 }else{
-    header("Location: ../login.php?error=1");
+    header("Location: ../index.php?error=1");
 }
 ?>
