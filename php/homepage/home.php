@@ -12,6 +12,24 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
     <title>SGI</title>
 </head>
 <body>
+<?php
+
+        include $_SERVER['DOCUMENT_ROOT'] . "/sgi/php/conexao.php";
+
+        $sql = "SELECT SUM(quantidade) AS total_quantidade FROM entrada_produtos";
+        $dado = $pdo->prepare($sql);
+        $dado->execute();
+
+        $resultado = $dado->fetch(PDO::FETCH_ASSOC);
+        $quantidade = $resultado['total_quantidade'];
+
+        $sql = "SELECT SUM(preco_custo) AS preco_custo FROM entrada_produtos";
+        $dado = $pdo->prepare($sql);
+        $dado->execute();
+
+        $resultado = $dado->fetch(PDO::FETCH_ASSOC);
+        $total = $resultado['preco_custo'];
+    ?>
     <section>
         <div class="pd__top">
             <p>Tela inicial</p>
@@ -22,9 +40,15 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
             </div>
             <div class="home__item hm-center">
                 <h2>QUANTIDADE DE PRODUTOS NO <br> ESTOQUE</h2>
+                <div>
+                    <?php echo $quantidade; ?>
+                </div>
             </div>
             <div class="home__item hm-right">
                 <h2>CUSTO TOTAL <br> PRODUTOS</h2>
+                <div>
+                    <?php echo "R$" . $total; ?>
+                </div>
             </div>
         </div>
         <div class="pd__cent">
