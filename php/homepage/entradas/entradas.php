@@ -53,8 +53,8 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
             <thead>
                 <tr>
                     <th class="mw2">ID produto</th>
-                    <th>Produto</th>
-                    <th>Marca</th>
+                    <th class="mw5">Produto</th>
+                    <th class="mw5">Marca</th>
                     <th>Preço de custo</th>
                     <th>Preço de venda</th>
                     <th>Data de fabricação</th>
@@ -89,16 +89,16 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
                         $data_entrada = inverte_data($data_entrada);
 
                         echo "<tr>
-                                <td>$id_produto</td>
-                                <td>$produto</td>
-                                <td>$marca</td>
+                                <td class='mw2'>$id_produto</td>
+                                <td class='mw5'>$produto</td>
+                                <td class='mw5'>$marca</td>
                                 <td>$preco_custo</td>
                                 <td>$preco_venda</td>
                                 <td>$data_fabricacao</td>
                                 <td>$data_validade</td>
                                 <td>$data_entrada</td>
-                                <td>$quantidade</td>
-                                <td>$id_fornecedor</td>
+                                <td class='mw2'>$quantidade</td>
+                                <td class='mw2'>$id_fornecedor</td>
                                 <td>$fornecedor</td>
                                 <td>
                                     <form action='index.php?pg=editar-entrada-produtos' method='POST'>

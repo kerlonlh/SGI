@@ -75,30 +75,38 @@ body{
 
 .table__container {
     width: 100%;
+    max-height: 27rem;
     overflow-x: auto;
+    overflow-y: auto;
+    border: 1px solid var(--lightgray);
+    margin: 2rem 0;
 }
 table {
     min-width: 1000px;
+    min-height: 100px;
     width: 100%;
-    margin: 2rem 0;
     border-collapse: collapse;
     box-shadow: var(--sombra-primary);
     background-color: var(--white);
 }
-
 table thead {
     background-color: var(--color-header);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
 }
-table th, table td {
-    padding: 1rem;
-    text-align: left;
-    border-bottom: 1px solid var(--lightgray);
-}
+
 
 table th {
     color: var(--dimgray);
     font-weight: 600;
     min-width: 10rem;
+    text-align: left;
+    border-bottom: 1px solid var(--lightgray);
+    padding: 1rem;
+    
+    
 }
 .mw1{
     min-width: 4rem;
@@ -109,14 +117,24 @@ table th {
     min-width: 7rem;
     max-width: 7rem;
 }
+.mw5{
+    min-width: 15rem;
+    max-width: 15rem;
+}
+table td {
+    padding: 0.5rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--lightgray);
+    color: var(--black);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    position: relative;
+}
 
 table tr:hover {
     background-color: var(--gray);
     transition: background-color 0.3s ease;
-}
-
-table td {
-    color: var(--black);
 }
 
 table td a {
