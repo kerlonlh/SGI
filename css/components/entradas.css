@@ -27,6 +27,36 @@ body{
     background-image: linear-gradient(to bottom, var(--DodgerBlue), var(--deepskyblue));
     box-shadow: 0rem 0.4rem 1rem rgba(0, 0, 0, 0.9);
 }
+.btn-edit{
+    background-image: linear-gradient(to bottom, var(--green-faint), var(--green-strong));
+    color: var(--white);
+    border: none;
+    border-radius: 0.5rem;
+    height: 1.5rem;
+    padding: 0.2rem 0.5rem;
+    cursor: pointer;
+    box-shadow: 0rem 0.4rem 0.9rem rgba(0, 0, 0, 0.7);
+    transition: all 0.3s ease;
+}
+.btn-edit:hover{
+    background-image: linear-gradient(to bottom, var(--green-strong), var(--green-faint));
+    box-shadow: 0rem 0.4rem 1rem rgba(0, 0, 0, 0.9);
+}
+.btn-exclude{
+    background-image: linear-gradient(to bottom, var(--red-faint), var(--red-strong));
+    color: var(--white);
+    border: none;
+    border-radius: 0.5rem;
+    height: 1.5rem;
+    padding: 0.2rem 0.5rem;
+    cursor: pointer;
+    box-shadow: 0rem 0.4rem 0.9rem rgba(0, 0, 0, 0.7);
+    transition: all 0.3s ease;
+}
+.btn-exclude:hover{
+    background-image: linear-gradient(to bottom, var(--red-strong), var(--red-faint));
+    box-shadow: 0rem 0.4rem 1rem rgba(0, 0, 0, 0.9);
+}
 .section__form {
     display: flex;
     justify-content: space-between;
@@ -43,8 +73,12 @@ body{
     box-shadow: 0rem 0.4rem 0.9rem rgba(0, 0, 0, 0.7);
 }
 
-
+.table__container {
+    width: 100%;
+    overflow-x: auto;
+}
 table {
+    min-width: 1000px;
     width: 100%;
     margin: 2rem 0;
     border-collapse: collapse;
@@ -55,7 +89,6 @@ table {
 table thead {
     background-color: var(--color-header);
 }
-
 table th, table td {
     padding: 1rem;
     text-align: left;
@@ -65,6 +98,16 @@ table th, table td {
 table th {
     color: var(--dimgray);
     font-weight: 600;
+    min-width: 10rem;
+}
+.mw1{
+    min-width: 4rem;
+    max-width: 4rem;
+}
+
+.mw2{
+    min-width: 7rem;
+    max-width: 7rem;
 }
 
 table tr:hover {
@@ -84,4 +127,30 @@ table td a {
 
 table td a:hover {
     text-decoration: underline;
+}
+
+
+:root{
+    --white: #ffffff;
+    --gray: #d9d9d9;
+    --black: #000000;
+
+
+    --deepskyblue: #00B3FF;
+    --DodgerBlue: #0072C2;
+    --gainsboro: #E3E4E8;
+    --dimgray: #4D4D4D;
+    --lightgray: #CCCCCC;
+    --green-faint: #1eab2e;
+    --green-strong: #098617;
+    --red-faint: #da2424;
+    --red-strong: #af0202;
+  
+    --color-header: #f5f4fb;
+  
+    --sombra-primary: 0 0.4rem 0.5rem rgba(0, 0, 0, 0.1);
+  
+    --font-family: 'DM Sans', sans-serif;
+
+
 }

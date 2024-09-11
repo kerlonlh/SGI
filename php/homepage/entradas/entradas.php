@@ -23,6 +23,7 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
 
         $sql = "SELECT * FROM entrada_produtos
         JOIN produtos ON entrada_produtos.id_produto = produtos.id
+        JOIN fornecedores ON entrada_produtos.id_fornecedor = fornecedores.id
         WHERE 
         id_produto LIKE :pesquisa 
         OR preco_custo LIKE :pesquisa 
@@ -33,7 +34,8 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
         OR quantidade LIKE :pesquisa 
         OR id_fornecedor LIKE :pesquisa
         OR produtos.produto LIKE :pesquisa 
-        OR produtos.marca LIKE :pesquisa ";
+        OR produtos.marca LIKE :pesquisa
+        OR fornecedores.razao_social LIKE :pesquisa ";
 
         $dado = $pdo->prepare($sql);
         $dado->execute([':pesquisa' => "%$pesquisa%"]);
@@ -46,67 +48,73 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
         <a href="index.php?pg=cadastrar-entrada-produtos"><button class="btn">Cadastrar entrada de produto</button></a>
         <a href="index.php?pg=home"><button class="btn">Página inicial</button></a>
     </section>
-    <table>
-        <thead>
-            <tr>
-                <th>Código <br>do Produto</th>
-                <th>Produto</th>
-                <th>Marca</th>
-                <th>Preço <br>de custo</th>
-                <th>Preço <br>de venda</th>
-                <th>Data de<br> fabricação</th>
-                <th>Data de<br> validade</th>
-                <th>Data de<br> entrada</th>
-                <th>Quantidade</th>
-                <th>Código do<br> fornecedor</th>
-                <th>Editar</th>
-                <th>Excluir</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-                while ($linha = $dado->fetch(PDO::FETCH_ASSOC)){
-                    $id_entrada = $linha['id_entrada_produtos'];
-                    $id_produto = $linha['id_produto'];
-                    $preco_custo = $linha['preco_custo'];
-                    $preco_venda = $linha['preco_venda'];
-                    $data_fabricacao = $linha['data_fabricacao'];
-                    $data_validade = $linha['data_validade'];
-                    $data_entrada = $linha['data_entrada'];
-                    $quantidade = $linha['quantidade'];
-                    $id_fornecedor = $linha['id_fornecedor'];
-                    $produto = $linha['produto'];
-                    $marca = $linha['marca'];
+    <div class="table__container">
+        <table>
+            <thead>
+                <tr>
+                    <th class="mw2">ID produto</th>
+                    <th>Produto</th>
+                    <th>Marca</th>
+                    <th>Preço de custo</th>
+                    <th>Preço de venda</th>
+                    <th>Data de fabricação</th>
+                    <th>Data de validade</th>
+                    <th>Data de entrada</th>
+                    <th class="mw2">Quantidade</th>
+                    <th class="mw2">ID fornecedor</th>
+                    <th>Fornecedor</th>
+                    <th class="mw1">Editar</th>
+                    <th class="mw1">Excluir</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                    while ($linha = $dado->fetch(PDO::FETCH_ASSOC)){
+                        $id_entrada = $linha['id_entrada_produtos'];
+                        $id_produto = $linha['id_produto'];
+                        $preco_custo = $linha['preco_custo'];
+                        $preco_venda = $linha['preco_venda'];
+                        $data_fabricacao = $linha['data_fabricacao'];
+                        $data_validade = $linha['data_validade'];
+                        $data_entrada = $linha['data_entrada'];
+                        $quantidade = $linha['quantidade'];
+                        $id_fornecedor = $linha['id'];
+                        $fornecedor = $linha['razao_social'];
+                        $produto = $linha['produto'];
+                        $marca = $linha['marca'];
 
 
-                    $data_fabricacao = inverte_data($data_fabricacao);
-                    $data_validade = inverte_data($data_validade);
-                    $data_entrada = inverte_data($data_entrada);
+                        $data_fabricacao = inverte_data($data_fabricacao);
+                        $data_validade = inverte_data($data_validade);
+                        $data_entrada = inverte_data($data_entrada);
 
-                    echo "<tr>
-                            <td>$id_produto</td>
-                            <td>$produto</td>
-                            <td>$marca</td>
-                            <td>$preco_custo</td>
-                            <td>$preco_venda</td>
-                            <td>$data_fabricacao</td>
-                            <td>$data_validade</td>
-                            <td>$data_entrada</td>
-                            <td>$quantidade</td>
-                            <td>$id_fornecedor</td>
-                            <td>
-                                <form action='index.php?pg=editar-entrada-produtos' method='POST'>
-                                    <input type='hidden' name='id_entrada_produtos' value='$id_entrada'>
-                                    <button type='submit'>Editar</button>
-                                </form>
-                            </td>
-                            <td><a href='#'><button type='submit'>Excluir</button></a></td>
-                        </tr>";
-                }
-            ?>
-            
-        </tbody>
-    </table>
+                        echo "<tr>
+                                <td>$id_produto</td>
+                                <td>$produto</td>
+                                <td>$marca</td>
+                                <td>$preco_custo</td>
+                                <td>$preco_venda</td>
+                                <td>$data_fabricacao</td>
+                                <td>$data_validade</td>
+                                <td>$data_entrada</td>
+                                <td>$quantidade</td>
+                                <td>$id_fornecedor</td>
+                                <td>$fornecedor</td>
+                                <td>
+                                    <form action='index.php?pg=editar-entrada-produtos' method='POST'>
+                                        <input type='hidden' name='id_entrada_produtos' value='$id_entrada'>
+                                        <button class='btn-edit'type='submit'>Editar</button>
+                                    </form>
+                                </td>
+                                <td><a href='#'><button class='btn-exclude' type='submit'>Excluir</button></a></td>
+                            </tr>";
+                    }
+                ?>
+                
+            </tbody>
+        </table>
+    </div>
+    
 </body>
 </html>
 
