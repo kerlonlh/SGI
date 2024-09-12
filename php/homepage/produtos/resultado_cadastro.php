@@ -8,7 +8,7 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SGI</title>
-    <link rel="stylesheet" href="/sgi/css/components/produtos.css">
+    <link rel="stylesheet" href="/sgi/css/components/produtos/cadastros_produtos.css">
 </head>
 <body>
     <section>
@@ -22,14 +22,16 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
             $sql = $pdo->prepare($sql);
 
             if($sql->execute()){
-                echo "$produto cadastrado com sucesso!";
+                echo '<div class="message__success">' . "$produto" . ' cadastrado com sucesso! </div>';
             }else{
-                echo "$produto não foi cadastrado!";
+                echo '<div class="message__error">' . "$produto" . ' NÃO foi cadastrado! </div>';
             }
         ?>
     </section>
-    <a href="index.php?pg=cadastrar-produtos"><button>CADASTRAR NOVO PRODUTO</button></a>
-    <a href="index.php?pg=produtos"><button>VISUALIZAR PRODUTOS</button></a>
+    <div class="div__btn">
+        <a href="index.php?pg=cadastrar-produtos"><button class="btn">CADASTRAR NOVO PRODUTO</button></a>
+        <a href="index.php?pg=produtos"><button class="btn">VISUALIZAR PRODUTOS</button></a>
+    </div>
 </body>
 </html>
 

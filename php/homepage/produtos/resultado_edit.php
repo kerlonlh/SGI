@@ -8,7 +8,7 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SGI</title>
-    <link rel="stylesheet" href="/sgi/css/components/produtos.css">
+    <link rel="stylesheet" href="/sgi/css/components/produtos/cadastros_produtos.css">
 </head>
 <body>
     <section>
@@ -24,16 +24,16 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
                 $stmt = $pdo->prepare($sql);
 
                 if($stmt->execute([':produto' => $produto, ':marca' => $marca, ':id' => $id])){
-                    echo "$produto atualizado com sucesso!";
+                    echo '<div class="message__success">' . "$produto ". ' atualizado com sucesso! </div>';
                 } else {
-                    echo "$produto não foi atualizado!";
+                    echo '<div class="message__error">' . "$produto ". ' não foi atualizado! </div>';
                 }
             } else {
-                echo "Dados insuficientes para atualizar o produto.";
+                echo '<div class="message__error"> Dados insuficientes para atualizar o produto. </div>';
             }
         ?>
     </section>
-    <a href="index.php?pg=produtos"><button>VISUALIZAR PRODUTOS</button></a>
+    <a href="index.php?pg=produtos"><button class="btn">VOLTAR</button></a>
 </body>
 </html>
 

@@ -21,9 +21,10 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
             $data_validade = $_POST['data_validade'];
             $data_entrada = $_POST['data_entrada'];
             $quantidade = $_POST['quantidade'];
+            $estoque = $_POST['quantidade'];
             $id_fornecedor = $_POST['id_fornecedor'];
 
-            $sql = "INSERT INTO `entrada_produtos`(`id_produto`, `preco_custo`, `preco_venda`, `data_fabricacao`, `data_validade`, `data_entrada`, `quantidade`, `id_fornecedor`) VALUES ('$id_produto','$preco_custo','$preco_venda','$data_fabricacao','$data_validade','$data_entrada','$quantidade','$id_fornecedor')";
+            $sql = "INSERT INTO `entrada_produtos`(`id_produto`, `preco_custo`, `preco_venda`, `data_fabricacao`, `data_validade`, `data_entrada`, `quantidade`, `estoque`, `id_fornecedor`) VALUES ('$id_produto','$preco_custo','$preco_venda','$data_fabricacao','$data_validade','$data_entrada','$quantidade','$estoque','$id_fornecedor')";
         
             $sql = $pdo->prepare($sql);
             

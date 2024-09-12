@@ -16,14 +16,14 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
 
         include $_SERVER['DOCUMENT_ROOT'] . "/sgi/php/conexao.php";
 
-        $sql = "SELECT SUM(quantidade) AS total_quantidade FROM entrada_produtos";
+        $sql = "SELECT SUM(estoque) AS total_quantidade FROM entrada_produtos";
         $dado = $pdo->prepare($sql);
         $dado->execute();
 
         $resultado = $dado->fetch(PDO::FETCH_ASSOC);
         $quantidade = $resultado['total_quantidade'];
 
-        $sql = "SELECT SUM(preco_custo) AS preco_custo FROM entrada_produtos";
+        $sql = "SELECT SUM(preco_custo * estoque) AS preco_custo FROM entrada_produtos WHERE estoque > 0";
         $dado = $pdo->prepare($sql);
         $dado->execute();
 

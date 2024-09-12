@@ -32,6 +32,7 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
         OR data_validade LIKE :pesquisa 
         OR data_entrada LIKE :pesquisa 
         OR quantidade LIKE :pesquisa 
+        OR estoque LIKE :pesquisa 
         OR id_fornecedor LIKE :pesquisa
         OR produtos.produto LIKE :pesquisa 
         OR produtos.marca LIKE :pesquisa
@@ -61,6 +62,7 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
                     <th>Data de validade</th>
                     <th>Data de entrada</th>
                     <th class="mw2">Quantidade</th>
+                    <th class="mw2">Estoque</th>
                     <th class="mw2">ID fornecedor</th>
                     <th>Fornecedor</th>
                     <th class="mw1">Editar</th>
@@ -78,6 +80,7 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
                         $data_validade = $linha['data_validade'];
                         $data_entrada = $linha['data_entrada'];
                         $quantidade = $linha['quantidade'];
+                        $estoque = $linha['estoque'];
                         $id_fornecedor = $linha['id'];
                         $fornecedor = $linha['razao_social'];
                         $produto = $linha['produto'];
@@ -98,6 +101,7 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
                                 <td>$data_validade</td>
                                 <td>$data_entrada</td>
                                 <td class='mw2'>$quantidade</td>
+                                <td class='mw2'>$estoque</td>
                                 <td class='mw2'>$id_fornecedor</td>
                                 <td>$fornecedor</td>
                                 <td>

@@ -8,11 +8,11 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SGI</title>
-    <link rel="stylesheet" href="/sgi/css/components/produtos.css">
+    <link rel="stylesheet" href="/sgi/css/components/produtos/cadastros_produtos.css">
 </head>
 <body>
     <section>
-        <p>Cadastrar produtos</p>
+        <h1>Cadastrar produtos</h1>
         <form action="index.php?pg=resultado-produtos" method="POST">
             <div>
                 <label for="nome">Nome do produto</label>
@@ -23,10 +23,10 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
                 <input type="text" name="marca" required>
             </div>
             <div>
-                <input type="submit">
+                <button class="btn" type="submit">Salvar</button>
             </div>
         </form>
-
+        <a href="index.php?pg=produtos"><button class="btn">Voltar</button></a>
     </section>
 </body>
 </html>

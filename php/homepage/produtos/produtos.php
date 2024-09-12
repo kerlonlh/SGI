@@ -8,14 +8,9 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SGI</title>
-    <link rel="stylesheet" href="/sgi/css/components/produtos.css">
+    <link rel="stylesheet" href="/sgi/css/components/produtos/produtos.css">
 </head>
 <body>
-    <section>
-        <a href="index.php?pg=cadastrar-produtos"><button>CADASTRAR PRODUTO</button></a>
-        <a href="index.php?pg=home"><button>PÁGINA INICIAL</button></a>
-    </section>
-
     <?php
         $pesquisa = $_POST['buscar'] ?? '';
 
@@ -26,43 +21,51 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
         $dado = $pdo->prepare($sql);
         $dado->execute([':pesquisa' => "%$pesquisa%"]);
     ?>
-    <form action="index.php?pg=produtos" method="POST">
-        <input type="search" placeholder="Pesquisar produto" name="buscar" autofocus>
-        <button type="submit">Pesquisar</button>
-    </form>
-    <table>
-        <thead>
-            <tr>
-                <th>Código</th>
-                <th>Produto</th>
-                <th>Marca</th>
-                <th>Funções</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-                while ($linha = $dado->fetch(PDO::FETCH_ASSOC)){
-                    $id = $linha['id'];
-                    $produto = $linha['produto'];
-                    $marca = $linha['marca'];
+    <section class="section__top">
+        <form class="section__form" action="index.php?pg=produtos" method="POST">
+            <input type="search" placeholder="Pesquisar produto" name="buscar" autofocus>
+            <button class="btn" type="submit">Pesquisar</button>
+        </form>
+        <a href="index.php?pg=cadastrar-produtos"><button class="btn">CADASTRAR PRODUTO</button></a>
+        <a href="index.php?pg=home"><button class="btn">PÁGINA INICIAL</button></a>
+    </section>
+    <div class="table__container">
+        <table>
+            <thead>
+                <tr>
+                    <th class="mw1">Código</th>
+                    <th class="mw5">Produto</th>
+                    <th class="mw5">Marca</th>
+                    <th class="mw1">Editar</th>
+                    <th class="mw1">Excluir</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                    while ($linha = $dado->fetch(PDO::FETCH_ASSOC)){
+                        $id = $linha['id'];
+                        $produto = $linha['produto'];
+                        $marca = $linha['marca'];
 
-                    echo "<tr>
-                            <th>$id</th>
-                            <td>$produto</td>
-                            <td>$marca</td>
-                            <td>
-                                <form action='index.php?pg=editar-produtos' method='POST'>
-                                    <input type='hidden' name='id' value='$id'>
-                                    <button type='submit'>Editar</button>
-                                </form>
-                            </td>
-                            <td><a href='#'><button type='submit'>Excluir</button></a></td>
-                        </tr>";
-                }
-            ?>
-            
-        </tbody>
-    </table>
+                        echo "<tr>
+                                <th class='mw1'>$id</th>
+                                <td class='mw5'>$produto</td>
+                                <td class='mw5'>$marca</td>
+                                <td class='mw1'>
+                                    <form action='index.php?pg=editar-produtos' method='POST'>
+                                        <input type='hidden' name='id' value='$id'>
+                                        <button class='btn-edit' type='submit'>Editar</button>
+                                    </form>
+                                </td class='mw1'>
+                                <td><a href='#'><button class='btn-exclude' type='submit'>Excluir</button></a></td>
+                            </tr>";
+                    }
+                ?>
+                
+            </tbody>
+        </table>
+    </div>
+    
 </body>
 </html>
 

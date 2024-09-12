@@ -14,26 +14,33 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
     <section>
         <?php
             include $_SERVER['DOCUMENT_ROOT'] . "/sgi/php/conexao.php";
-            $id_produto = $_POST['id_produto'];
-	    $quantidade = $_POST['quantidade'];
-            $data_saida = $_POST['data_saida'];
-            $cliente = $_POST['cliente'];
-
-            $sql = "INSERT INTO `saida_produtos`(`id_produto`, `quantidade` ,`data_saida`, `cliente`) VALUES ('$id_produto','$quantidade','$data_saida','$cliente')";
         
-            $sql = $pdo->prepare($sql);
-            
-            if($sql->execute()){
-                echo "$id_produto foi retirado!";
-            }else{
-                echo "$id_produto não foi retirado!";
+            if (isset($_POST['id_entrada_produtos'], $_POST['id_produto'], $_POST['preco_custo'], $_POST['preco_venda'], $_POST['data_fabricacao'], $_POST['data_validade'], $_POST['data_entrada'], $_POST['quantidade'], $_POST['id_fornecedor'])) {
+                $id_entrada = $_POST['id_entrada_produtos'];
+                $id_produto = $_POST['id_produto'];
+                $preco_custo = $_POST['preco_custo'];
+                $preco_venda = $_POST['preco_venda'];
+                $data_fabricacao = $_POST['data_fabricacao'];
+                $data_validade = $_POST['data_validade'];
+                $data_entrada = $_POST['data_entrada'];
+                $quantidade = $_POST['quantidade'];
+                $id_fornecedor = $_POST['id_fornecedor'];
+
+                $sql = "UPDATE entrada_produtos 
+                SET estoque = estoque - :quantidade WHERE id_entrada_produtos = :id_entrada_produtos";
+                $stmt = $pdo->prepare($sql);
+
+                if($stmt->execute([':quantidade' => $quantidade, ':id_entrada_produtos' => $id_entrada])){
+                    echo "$id_produto atualizado com sucesso!";
+                } else {
+                    echo "$id_produto não foi atualizado!";
+                }
+            } else {
+                echo "Dados insuficientes para atualizar o produto.";
             }
-
-
         ?>
     </section>
-    <a href="index.php?pg=cadastrar-saida-produtos"><button>CADASTRAR NOVA SAÍDA DE PRODUTO</button></a>
-    <a href="index.php?pg=saidas"><button>VISUALIZAR SAÍDA DE PRODUTOS</button></a>
+    <a href="index.php?pg=saidas"><button>VISUALIZAR SAÍDAS</button></a>
 </body>
 </html>
 

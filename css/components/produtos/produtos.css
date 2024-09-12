@@ -101,7 +101,6 @@ table thead {
 table th {
     color: var(--dimgray);
     font-weight: 600;
-    min-width: 10rem;
     text-align: left;
     border-bottom: 1px solid var(--lightgray);
     padding: 1rem;
@@ -109,21 +108,12 @@ table th {
     
 }
 .mw1{
-    min-width: 4rem;
-    max-width: 4rem;
-}
-
-.mw2{
-    min-width: 7rem;
-    max-width: 7rem;
-}
-.mw3{
-    min-width: 9rem;
-    max-width: 9rem;
+    min-width: 3rem;
+    max-width: 3rem;
 }
 .mw5{
-    min-width: 15rem;
-    max-width: 15rem;
+    min-width: 25rem;
+    max-width: 25rem;
 }
 table td {
     padding: 0.5rem 1rem;
@@ -150,7 +140,6 @@ table td a {
 table td a:hover {
     text-decoration: underline;
 }
-
 
 :root{
     --white: #ffffff;

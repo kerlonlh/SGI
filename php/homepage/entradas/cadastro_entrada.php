@@ -50,7 +50,7 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
                 <input type="submit">
             </div>
         </form>
-
+        <a href="index.php?pg=entradas"><button>Voltar</button></a>
     </section>
 </body>
 </html>
