@@ -1,3 +1,32 @@
+<?php
+session_start();
+if(isset($_POST) & !empty($_POST)){
+    if (isset($_POST['csrf_token'])) {
+       if ($_POST['csrf_token'] == $_SESSION['csrf_token']) {
+       }
+       else{
+        $errors[] = "Problema ao verificar CSRF Token";
+       }
+    }
+    $max_time = 5;
+    if (isset($_SESSION['csrf_token_time'])) {
+        $token_time = $_SESSION['csrf_token_time'];
+        if (($token_time + $max_time) >= time()) {
+        }else{
+            unset($_SESSION['csrf_token']);
+            unset($_SESSION['csrf_token_time']);
+            $errors[] = "CSRF Token expirado";
+        }
+    }
+    if (empty($errors)) {
+        $messages[] = "Proceed with Next steps";
+    }
+}
+$token = md5(uniqid(rand(), true));
+$_SESSION['csrf_token'] = $token;
+$_SESSION['csrf_token_time'] = time();
+
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -9,7 +38,8 @@
     <title>Login SGI</title>
 </head>
 <body>
-    <form class="form" action="php/logar.php" method="POST">
+    <form class="form" action="./php/logar.php" method="POST">
+        <input type="hidden" name="csrf_token" value="<?php echo $token; ?>">
         <div class="card">
             <div class="card_top">
                 <img src="assets/img-login.png" alt="Logo de login" class="img_login">

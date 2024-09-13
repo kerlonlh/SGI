@@ -1,0 +1,21 @@
+*{
+    font-family: Helvetica, sans-serif;
+    padding: 0;
+    margin: 0;
+}
+body{
+    padding: 7rem;
+}
+
+.form__saida{
+    display: flex;
+    justify-content:space-between;
+    flex-wrap: wrap;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--dimgray);
+    margin: 1.5rem 10rem;
+}
+.form__saida p{
+    padding: 1rem 2rem;
+}

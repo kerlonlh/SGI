@@ -1,5 +1,5 @@
 <?php
-require '../../verifica.php';
+require $_SERVER['DOCUMENT_ROOT'] . "/sgi/php/verifica.php";
 if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
 
 <!DOCTYPE html>
@@ -8,7 +8,7 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SGI</title>
-    <link rel="stylesheet" href="/sgi/css/components/produtos.css">
+    <link rel="stylesheet" href="/sgi/css/components/produtos/produtos.css">
 </head>
 <body>
     <section>

@@ -8,10 +8,16 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SGI</title>
-    <link rel="stylesheet" href="/sgi/css/components/produtos.css">
+    <link rel="stylesheet" href="/sgi/css/components/saidas/cadastro_saida.css">
 </head>
 <body>
     <?php
+
+    function inverte_data($data){
+        $d = explode ('-', $data);
+        $escreve = $d[2] . "/" . $d[1] . "/" . $d[0];
+        return $escreve;
+    }
     include $_SERVER['DOCUMENT_ROOT'] . "/sgi/php/conexao.php";
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['id_entrada_produtos'])) {
         $id_entrada = $_POST['id_entrada_produtos'];
@@ -23,48 +29,44 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
 
         $linha = $dados->fetch(PDO::FETCH_ASSOC);
 
+
+
+        $id_produto = $linha['id_produto'];
+        $preco_custo = $linha['preco_custo'];
+        $preco_venda = $linha['preco_venda'];
+        $data_fabricacao = $linha['data_fabricacao'];
+        $data_validade = $linha['data_validade'];
+        $data_entrada = $linha['data_entrada'];
+
+
+        $data_fabricacao = inverte_data($data_fabricacao);
+        $data_validade = inverte_data($data_validade);
+        $data_entrada = inverte_data($data_entrada);
+
         if ($linha) {
     ?>
             <section>
-                <p>Atualizar cadastro de produtos</p>
+                <h1>Registrar saida de produtos</h1>
                 <form action="index.php?pg=resultado-saida-produtos" method="POST">
-                <div>
-                    <label for="nome">Código do produto</label>
-                    <input type="number" name="id_produto" required value="<?php echo htmlspecialchars($linha['id_produto']);?>">
-                </div>
-                <div>
-                    <label for="nome">Preço de custo</label>
-                    <input type="number" step="0.01" min="0" name="preco_custo" required value="<?php echo htmlspecialchars($linha['preco_custo']); ?>">
-                </div>
-                <div>
-                    <label for="nome">Preço de venda</label>
-                    <input type="number" step="0.01" min="0" name="preco_venda" required value="<?php echo htmlspecialchars($linha['preco_venda']); ?>">
-                </div>
-                <div>
-                    <label for="nome">Data de fabricação</label>
-                    <input type="date" name="data_fabricacao" required value="<?php echo htmlspecialchars($linha['data_fabricacao']); ?>">
-                </div>
-                <div>
-                    <label for="nome">Data de validade</label>
-                    <input type="date" name="data_validade" required value="<?php echo htmlspecialchars($linha['data_validade']); ?>">
-                </div>
-                <div>
-                    <label for="nome">Data de entrada no estoque</label>
-                    <input type="date" name="data_entrada" required value="<?php echo htmlspecialchars($linha['data_entrada']); ?>">
-                </div>
-                <div>
-                    <label for="nome">Quantidade</label>
-                    <input type="number" min="0" max="<?php echo $linha['estoque']; ?>" name="quantidade" required>
-                </div>
-                <div>
-                    <label for="nome">Código do fornecedor</label>
-                    <input type="number" name="id_fornecedor" required value="<?php echo htmlspecialchars($linha['id_fornecedor']); ?>">
-                </div>
-                <div>
-                    <input type="hidden" name="id_entrada_produtos" value="<?php echo htmlspecialchars($id_entrada); ?>">
-                    <input type="submit" value="Salvar alterações">
-                </div>
+                    <div class="form__saida">
+                        <p>Código do produto:  <?php echo htmlspecialchars($id_produto);?></p>
+                        <p>Preço de custo:  <?php echo htmlspecialchars($preco_custo);?></p>
+                        <p>Preço de venda: <?php echo htmlspecialchars($preco_venda);?></p>
+                        <p>Data de fabricação:  <?php echo htmlspecialchars($data_fabricacao);?></p>
+                        <p>Data de validade:  <?php echo htmlspecialchars($data_validade);?></p>
+                        <p>Data de entrada no estoque: <?php echo htmlspecialchars($data_entrada);?></p>
+                        <p>Código do fornecedor: <?php echo htmlspecialchars($linha['id_fornecedor']);?></p>
+                        <p>
+                            <label for="nome">Quantidade</label>
+                            <input type="number" min="0" max="<?php echo $linha['estoque']; ?>" name="quantidade" required>
+                        </p>
+                    </div>
+                    <div>
+                        <input type="hidden" name="id_entrada_produtos" value="<?php echo htmlspecialchars($id_entrada); ?>">
+                        <input type="submit" value="Registrar ">
+                    </div>
                 </form>
+                <a href="index.php?pg=saidas"><button>VOLTAR</button></a>
             </section>
     <?php
         } else {
@@ -75,7 +77,6 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
     }
     ?>
 
-    <a href="index.php?pg=saidas"><button>VOLTAR</button></a>
 </body>
 </html>
 <?php else: header("Location: /sgi/index.php"); endif; ?>

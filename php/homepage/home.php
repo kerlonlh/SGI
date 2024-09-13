@@ -29,6 +29,13 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
 
         $resultado = $dado->fetch(PDO::FETCH_ASSOC);
         $total = $resultado['preco_custo'];
+
+        $sql = "SELECT SUM((preco_venda - preco_custo) * estoque) AS lucro FROM entrada_produtos WHERE estoque > 0";
+        $dado = $pdo->prepare($sql);
+        $dado->execute();
+
+        $resultado = $dado->fetch(PDO::FETCH_ASSOC);
+        $lucro = $resultado['lucro'];
     ?>
     <section>
         <div class="pd__top">
@@ -36,18 +43,21 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
         </div>
         <div class="home">
             <div class="home__item hm-left">
-                <h2>PRODUTOS COM ESTOQUE BAIXO</h2>
-            </div>
-            <div class="home__item hm-center">
                 <h2>QUANTIDADE DE PRODUTOS NO <br> ESTOQUE</h2>
-                <div>
+                <div class="dados">
                     <?php echo $quantidade; ?>
                 </div>
             </div>
-            <div class="home__item hm-right">
+            <div class="home__item hm-center">
                 <h2>CUSTO TOTAL <br> PRODUTOS</h2>
-                <div>
+                <div class="dados">
                     <?php echo "R$" . $total; ?>
+                </div>
+            </div>
+            <div class="home__item hm-right">
+                <h2>LUCRO TOTAL <br> PRODUTOS</h2>
+                <div class="dados">
+                    <?php echo "R$" . $lucro; ?>
                 </div>
             </div>
         </div>
