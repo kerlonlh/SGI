@@ -7,29 +7,28 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SGI</title>
-    <link rel="stylesheet" href="/sgi/css/components/saidas.css">
+    <link rel="stylesheet" href="/sgi/css/components/saidas/saidas.css">
 </head>
 <body>
     <section>
         <?php
             include $_SERVER['DOCUMENT_ROOT'] . "/sgi/php/conexao.php";
         
-            if (isset($_POST['id_entrada_produtos'], $_POST['id_produto'], $_POST['preco_custo'], $_POST['preco_venda'], $_POST['data_fabricacao'], $_POST['data_validade'], $_POST['data_entrada'], $_POST['quantidade'], $_POST['id_fornecedor'])) {
+            if (isset($_POST['id_entrada_produtos'], $_POST['estoque'])) {
                 $id_entrada = $_POST['id_entrada_produtos'];
                 $id_produto = $_POST['id_produto'];
-                $preco_custo = $_POST['preco_custo'];
-                $preco_venda = $_POST['preco_venda'];
-                $data_fabricacao = $_POST['data_fabricacao'];
-                $data_validade = $_POST['data_validade'];
-                $data_entrada = $_POST['data_entrada'];
-                $quantidade = $_POST['quantidade'];
-                $id_fornecedor = $_POST['id_fornecedor'];
+                $estoque = $_POST['estoque'];
+                $data_saida = $_POST['data_saida'];
 
                 $sql = "UPDATE entrada_produtos 
-                SET estoque = estoque - :quantidade WHERE id_entrada_produtos = :id_entrada_produtos";
-                $stmt = $pdo->prepare($sql);
+                SET estoque = estoque - :estoque WHERE id_entrada_produtos = :id_entrada_produtos";
+                $sql = $pdo->prepare($sql);
 
-                if($stmt->execute([':quantidade' => $quantidade, ':id_entrada_produtos' => $id_entrada])){
+                $sql_insert = "INSERT INTO `vendas`(`id_entrada`,`quantidade`,`data_saida`) VALUES ('$id_entrada','$estoque','$data_saida')";
+        
+                $sql_insert = $pdo->prepare($sql_insert);
+
+                if(($sql->execute([':estoque' => $estoque, ':id_entrada_produtos' => $id_entrada])) AND ($sql_insert->execute())){
                     echo "$id_produto atualizado com sucesso!";
                 } else {
                     echo "$id_produto não foi atualizado!";
