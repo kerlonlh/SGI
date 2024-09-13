@@ -25,7 +25,8 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
         JOIN produtos ON entrada_produtos.id_produto = produtos.id
         JOIN fornecedores ON entrada_produtos.id_fornecedor = fornecedores.id
         WHERE 
-        id_produto LIKE :pesquisa 
+        id_entrada_produtos LIKE :pesquisa
+        OR id_produto LIKE :pesquisa 
         OR preco_custo LIKE :pesquisa 
         OR preco_venda LIKE :pesquisa 
         OR data_fabricacao LIKE :pesquisa 
@@ -53,6 +54,7 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
         <table>
             <thead>
                 <tr>
+                    <th class="mw2">ID Lote</th>
                     <th class="mw2">ID produto</th>
                     <th class="mw5">Produto</th>
                     <th class="mw5">Marca</th>
@@ -92,6 +94,7 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
                         $data_entrada = inverte_data($data_entrada);
 
                         echo "<tr>
+                                <td class='mw2'>$id_entrada</td>
                                 <td class='mw2'>$id_produto</td>
                                 <td class='mw5'>$produto</td>
                                 <td class='mw5'>$marca</td>

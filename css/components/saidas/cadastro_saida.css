@@ -23,9 +23,10 @@ section h1{
 }
 .form__saida p input{
     
-    padding: 0.2rem 0.2rem 0.2rem 2rem;
+    padding: 0.2rem 0.2rem 0.2rem 2.5rem;
     font-size: 1.5rem;
 }
+.result__exit,
 .form__button{
     text-align: center;
     margin: 2rem;
@@ -45,4 +46,44 @@ section h1{
 .btn:hover {
     background-image: linear-gradient(to bottom, var(--DodgerBlue), var(--deepskyblue));
     box-shadow: 0rem 0.4rem 1rem rgba(0, 0, 0, 0.9);
+}
+
+.message__success{
+    color: var(--green-faint);
+    padding: 3rem 0;
+    font-weight: 600;
+    font-size: 1.5rem;
+
+}
+.message__error{
+    color: var(--red-faint);
+    padding: 3rem 0;
+    font-weight: 600;
+    font-size: 1.5rem;
+
+}
+
+:root{
+    --white: #ffffff;
+    --gray: #d9d9d9;
+    --black: #000000;
+
+
+    --deepskyblue: #00B3FF;
+    --DodgerBlue: #0072C2;
+    --gainsboro: #E3E4E8;
+    --dimgray: #4D4D4D;
+    --lightgray: #CCCCCC;
+    --green-faint: #1eab2e;
+    --green-strong: #098617;
+    --red-faint: #da2424;
+    --red-strong: #af0202;
+  
+    --color-header: #f5f4fb;
+  
+    --sombra-primary: 0 0.4rem 0.5rem rgba(0, 0, 0, 0.1);
+  
+    --font-family: 'DM Sans', sans-serif;
+
+
 }

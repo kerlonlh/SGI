@@ -42,7 +42,7 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
         $dado->execute([':pesquisa' => "%$pesquisa%"]);
     ?>
     <section class="section__top">
-        <form class="section__form" action="index.php?pg=entradas" method="POST">
+        <form class="section__form" action="index.php?pg=saidas" method="POST">
             <input type="search" placeholder="Pesquisar entrada de produto" name="buscar" autofocus>
             <button class="btn" type="submit">Pesquisar produto</button>
         </form>
