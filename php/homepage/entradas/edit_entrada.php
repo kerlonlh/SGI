@@ -8,7 +8,7 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SGI</title>
-    <link rel="stylesheet" href="/sgi/css/components/produtos.css">
+    <link rel="stylesheet" href="/sgi/css/components/entradas/cadastrar_entradas.css">
 </head>
 <body>
     <?php
@@ -26,44 +26,43 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
         if ($linha) {
     ?>
             <section>
-                <p>Atualizar cadastro de produtos</p>
+                <h1>Atualizar cadastro de produtos</h1>
                 <form action="index.php?pg=resultado-edicao-entradas" method="POST">
-                <div>
-                    <label for="nome">Código do produto</label>
-                    <input type="number" name="id_produto" required value="<?php echo htmlspecialchars($linha['id_produto']);?>">
-                </div>
-                <div>
-                    <label for="nome">Preço de custo</label>
-                    <input type="number" step="0.01" min="0" name="preco_custo" required value="<?php echo htmlspecialchars($linha['preco_custo']); ?>">
-                </div>
-                <div>
-                    <label for="nome">Preço de venda</label>
-                    <input type="number" step="0.01" min="0" name="preco_venda" required value="<?php echo htmlspecialchars($linha['preco_venda']); ?>">
-                </div>
-                <div>
-                    <label for="nome">Data de fabricação</label>
-                    <input type="date" name="data_fabricacao" required value="<?php echo htmlspecialchars($linha['data_fabricacao']); ?>">
-                </div>
-                <div>
-                    <label for="nome">Data de validade</label>
-                    <input type="date" name="data_validade" required value="<?php echo htmlspecialchars($linha['data_validade']); ?>">
-                </div>
-                <div>
-                    <label for="nome">Data de entrada no estoque</label>
-                    <input type="date" name="data_entrada" required value="<?php echo htmlspecialchars($linha['data_entrada']); ?>">
-                </div>
-                <div>
-                    <label for="nome">Quantidade</label>
-                    <input type="number" min="0" name="quantidade" required value="<?php echo htmlspecialchars($linha['quantidade']); ?>">
-                </div>
-                <div>
-                    <label for="nome">Código do fornecedor</label>
-                    <input type="number" name="id_fornecedor" required value="<?php echo htmlspecialchars($linha['id_fornecedor']); ?>">
-                </div>
-                <div>
-                    <input type="hidden" name="id_entrada_produtos" value="<?php echo htmlspecialchars($id_entrada); ?>">
-                    <input type="submit" value="Salvar alterações">
-                </div>
+                    <div class="form">
+                        <div>
+                            <label for="nome">Código do produto</label>
+                            <input type="number" name="id_produto" required value="<?php echo htmlspecialchars($linha['id_produto']);?>">
+                        </div>
+                        <div>
+                            <label for="nome">Preço de custo</label>
+                            <input type="number" step="0.01" min="0" name="preco_custo" required value="<?php echo htmlspecialchars($linha['preco_custo']); ?>">
+                        </div>
+                        <div>
+                            <label for="nome">Preço de venda</label>
+                            <input type="number" step="0.01" min="0" name="preco_venda" required value="<?php echo htmlspecialchars($linha['preco_venda']); ?>">
+                        </div>
+                        <div>
+                            <label for="nome">Data de fabricação</label>
+                            <input type="date" name="data_fabricacao" required value="<?php echo htmlspecialchars($linha['data_fabricacao']); ?>">
+                        </div>
+                        <div>
+                            <label for="nome">Data de validade</label>
+                            <input type="date" name="data_validade" required value="<?php echo htmlspecialchars($linha['data_validade']); ?>">
+                        </div>
+                        <div>
+                            <label for="nome">Data de entrada no estoque</label>
+                            <input type="date" name="data_entrada" required value="<?php echo htmlspecialchars($linha['data_entrada']); ?>">
+                        </div>
+                        <div>
+                            <label for="nome">Código do fornecedor</label>
+                            <input type="number" name="id_fornecedor" required value="<?php echo htmlspecialchars($linha['id_fornecedor']); ?>">
+                        </div>
+
+                    </div>
+                    <div>
+                        <input type="hidden" name="id_entrada_produtos" value="<?php echo htmlspecialchars($id_entrada); ?>">
+                        <button class="btn">Salvar alterações</button>
+                    </div>
                 </form>
             </section>
     <?php
@@ -74,8 +73,10 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
         echo "<p>ID do produto não fornecido.</p>";
     }
     ?>
-
-    <a href="index.php?pg=entradas"><button>VOLTAR</button></a>
+    <div class="div__btn">
+        <a href="index.php?pg=entradas"><button class="btn">VOLTAR</button></a>
+    </div>
+    
 </body>
 </html>
 <?php else: header("Location: /sgi/index.php"); endif; ?>

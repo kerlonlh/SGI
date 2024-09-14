@@ -8,7 +8,7 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SGI</title>
-    <link rel="stylesheet" href="/sgi/css/components/produtos.css">
+    <link rel="stylesheet" href="/sgi/css/components/entradas/cadastrar_entradas.css">
 </head>
 <body>
     <section>
@@ -28,15 +28,28 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
         
             $sql = $pdo->prepare($sql);
             
+            $sql_select = "SELECT produto AS produto FROM entrada_produtos
+            JOIN produtos ON entrada_produtos.id_produto = produtos.id
+            WHERE entrada_produtos.id_produto = :id_produto";
+
+            $dado = $pdo->prepare($sql_select);
+            $dado->execute([':id_produto' => $id_produto]);
+
+            $resultado = $dado->fetch(PDO::FETCH_ASSOC);
+            $produto = $resultado['produto'];
+
             if($sql->execute()){
-                echo "$id_produto foi cadastrado!";
+                echo '<div class="message__success">' . "$produto" . ' entrou no estoque com sucesso! </div>';
             }else{
-                echo "$id_produto não foi cadastrado!";
+                echo '<div class="message__error">' . "$produto" . ' NÃO entrou no estoque! </div>';
             }
         ?>
     </section>
-    <a href="index.php?pg=cadastrar-entrada-produtos"><button>CADASTRAR NOVA ENTRADA PRODUTO</button></a>
-    <a href="index.php?pg=entradas"><button>VISUALIZAR ENTRADA DE PRODUTOS</button></a>
+    <div class="div__btn">
+        <a href="index.php?pg=cadastrar-entrada-produtos"><button class="btn">Cadastrar nova entrada de produtos</button></a>
+        <a href="index.php?pg=entradas"><button class="btn">Visualizar entrada dos produtos</button></a>
+    </div>
+    
 </body>
 </html>
 

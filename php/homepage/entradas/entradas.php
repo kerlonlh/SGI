@@ -8,7 +8,7 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SGI</title>
-    <link rel="stylesheet" href="/sgi/css/components/entradas.css">
+    <link rel="stylesheet" href="/sgi/css/components/entradas/entradas.css">
 </head>
 <body>
     <?php

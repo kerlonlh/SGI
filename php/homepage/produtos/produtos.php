@@ -26,8 +26,8 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
             <input type="search" placeholder="Pesquisar produto" name="buscar" autofocus>
             <button class="btn" type="submit">Pesquisar</button>
         </form>
-        <a href="index.php?pg=cadastrar-produtos"><button class="btn">CADASTRAR PRODUTO</button></a>
-        <a href="index.php?pg=home"><button class="btn">PÁGINA INICIAL</button></a>
+        <a href="index.php?pg=cadastrar-produtos"><button class="btn">Cadastrar novo produto</button></a>
+        <a href="index.php?pg=home"><button class="btn">Página inicial</button></a>
     </section>
     <div class="table__container">
         <table>

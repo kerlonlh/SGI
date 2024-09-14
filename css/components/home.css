@@ -1,4 +1,6 @@
-
+*{
+    color: var(--dimgray);
+}
 .pd__top{
     padding: 6rem 0 0 10rem;
     font-size: 2rem;

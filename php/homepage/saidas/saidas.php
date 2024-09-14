@@ -44,7 +44,7 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
     <section class="section__top">
         <form class="section__form" action="index.php?pg=saidas" method="POST">
             <input type="search" placeholder="Pesquisar entrada de produto" name="buscar" autofocus>
-            <button class="btn" type="submit">Pesquisar produto</button>
+            <button class="btn" type="submit">Pesquisar</button>
         </form>
         <a href="index.php?pg=entradas"><button class="btn">Visualizar entrada de produtos</button></a>
         <a href="index.php?pg=home"><button class="btn">Página inicial</button></a>
