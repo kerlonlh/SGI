@@ -76,6 +76,9 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
             case 'fornecedores': require './fornecedores/fornecedores.php'; break;
             case 'cadastrar-fornecedor': require './fornecedores/cadastro_fornecedor.php'; break;
             case 'resultado-cadastro-fornecedor': require './fornecedores/resultado_fornecedor.php'; break;
+            case 'editar-fornecedor': require './fornecedores/editar_fornecedor.php'; break;
+            case 'resultado-edicao-fornecedores': require './fornecedores/resultado_edit.php'; break;
+            //home
             default: require './home.php';
             }        
             ?> 

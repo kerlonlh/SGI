@@ -1,5 +1,5 @@
 <?php
-require '../../verifica.php';
+require $_SERVER['DOCUMENT_ROOT'] . "/sgi/php/verifica.php";
 if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
 
 <!DOCTYPE html>
@@ -8,7 +8,7 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SGI</title>
-    <link rel="stylesheet" href="/sgi/css/components/produtos.css">
+    <link rel="stylesheet" href="/sgi/css/components/fornecedores/cadastrar_fornecedor.css">
 </head>
 <body>
     <section>
@@ -22,14 +22,16 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
             $sql = $pdo->prepare($sql);
 
             if($sql->execute()){
-                echo "$razao_social cadastrado com sucesso!";
+                echo '<div class="message__success">' . "$razao_social" . ' cadastrado com sucesso! </div>';
             }else{
-                echo "$razao_social não foi cadastrado!";
+                echo '<div class="message__success">' . "$razao_social" . ' NÂO foi cadastrado! </div>';
             }
         ?>
     </section>
-    <a href="index.php?pg=cadastrar-fornecedor"><button>CADASTRAR NOVO FORNECEDOR</button></a>
-    <a href="index.php?pg=fornecedores"><button>VISUALIZAR FORNECEDORES</button></a>
+    <div class="div__btn">
+        <a href="index.php?pg=cadastrar-fornecedor"><button class="btn">Cadastrar novo fornecedor</button></a>
+        <a href="index.php?pg=fornecedores"><button class="btn">Visualizar fornecedores</button></a>
+    </div>
 </body>
 </html>
 

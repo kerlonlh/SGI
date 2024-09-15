@@ -77,7 +77,7 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
                                 <td class='mw1'>$id_lote</td>
                                 <td class='mw5'>$produto</td>
                                 <td class='mw1'>$quantidade</td>
-                                <td class='mw1'>$lucro</td>
+                                <td class='mw1'>R$$lucro</td>
                                 <td class='mw1'>$data_entrada</td>
                                 <td class='mw1'>$data_saida</td>
                             </tr>";

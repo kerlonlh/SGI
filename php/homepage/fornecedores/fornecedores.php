@@ -8,7 +8,7 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SGI</title>
-    <link rel="stylesheet" href="/sgi/css/components/produtos/produtos.css">
+    <link rel="stylesheet" href="/sgi/css/components/fornecedores/fornecedores.css">
 </head>
 <body>
 <?php
@@ -51,7 +51,7 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
                                 <td class='mw5'>$razao_social</td>
                                 <td class='mw5'>$cnpj</td>
                                 <td class='mw1'>
-                                    <form action='index.php?pg=editar-produtos' method='POST'>
+                                    <form action='index.php?pg=editar-fornecedor' method='POST'>
                                         <input type='hidden' name='id' value='$id'>
                                         <button class='btn-edit' type='submit'>Editar</button>
                                     </form>
