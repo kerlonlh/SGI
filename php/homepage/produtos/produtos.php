@@ -61,13 +61,10 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
                             </tr>";
                     }
                 ?>
-                
             </tbody>
         </table>
     </div>
-    
 </body>
 </html>
-
 <?php else: header("Location: /sgi/index.php"); endif; ?>
 

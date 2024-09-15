@@ -11,7 +11,7 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
     <link rel="stylesheet" href="/sgi/css/components/fornecedores/fornecedores.css">
 </head>
 <body>
-<?php
+    <?php
         $pesquisa = $_POST['buscar'] ?? '';
         include $_SERVER['DOCUMENT_ROOT'] . "/sgi/php/conexao.php";
 
@@ -59,8 +59,7 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
                                 <td><a href='#'><button class='btn-exclude' type='submit'>Excluir</button></a></td>
                             </tr>";
                     }
-                ?>
-                
+                ?>   
             </tbody>
         </table>
     </div>

@@ -33,7 +33,7 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
             }
         ?>
     </section>
-    <a href="index.php?pg=produtos"><button class="btn">VOLTAR</button></a>
+    <a href="index.php?pg=produtos"><button class="btn">Voltar</button></a>
 </body>
 </html>
 
