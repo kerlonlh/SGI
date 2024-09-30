@@ -6,7 +6,7 @@ if (session_status() == PHP_SESSION_NONE) {
 
 $localhost = "localhost";
 $user = "root";
-$passw = "";
+$passw = "root";
 $banco = "sgi";
 
 global $pdo;
