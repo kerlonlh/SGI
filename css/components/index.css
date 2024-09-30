@@ -5,6 +5,10 @@
 }
 h1{
     color: var(--dimgray);
+    text-shadow: 3px 3px 2px rgba(0, 0, 0, 0.3);
+}
+h2{
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
 }
 body{
     background-color: var(--lightgray);
@@ -63,20 +67,20 @@ body{
     border-radius: 0.1rem;
 }
 .navbar .navbar__content .navbar__burguer.active .burguer .linha:nth-child(1){
-    transform: translateY(0.7rem) rotate(-45deg);
+    transform: translateY(0.65rem) rotate(-45deg);
     background-color: var(--dimgray);
     transition: 0.3s;
-    width: 2.5rem;
-    height: 0.25rem;
+    width: 2rem;
+    height: 0.2rem;
     box-shadow: 0 0.2rem 0.5rem rgba(0,0,0,0.2);
 
 }
 .navbar .navbar__content .navbar__burguer.active .burguer .linha:nth-child(3){
-    transform: translateY(-0.7rem) rotate(45deg);
+    transform: translateY(-0.65rem) rotate(45deg);
     background-color: var(--dimgray);
     transition: 0.3s;
-    width: 2.5rem;
-    height: 0.3rem;
+    width: 2rem;
+    height: 0.2rem;
     box-shadow: 0 0.2rem 0.5rem rgba(0,0,0,0.2);
 }
 .navbar .navbar__content .navbar__burguer.active .burguer .linha:nth-child(2){
@@ -107,6 +111,7 @@ body{
     font-weight: 700;
     color: var(--white);
     text-decoration: none;
+    text-shadow: 3px 3px 2px rgba(0, 0, 0, 0.3);
 
 }
 .navbar .navbar__content .navbar__burguer.active .navbar__links a:hover{
@@ -114,16 +119,19 @@ body{
     color: var(--lightgray);
 }
 
-.navbar__burguer.active .sgi{
+.navbar .navbar__content .navbar__burguer.active .sgi{
     display: flex;
     font-size: 2rem;
     z-index: -1;
-    color: var(--white);
+    color: #ffffff;
     padding-left: 2rem;
 
 }
-
-
+.navbar .navbar__content .navbar__burguer.active .sgi h1{
+    background-clip: text;
+    color: #ffffff;
+    text-shadow: 5px 5px 4px rgba(0, 0, 0, 0.5);
+}
 .navbar__exit{
     display: flex;
     justify-content: end;

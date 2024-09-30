@@ -29,7 +29,7 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
                     <li><a href="index.php?pg=fornecedores">Fornecedores</a></li>
                 </ul>
                 <div class="sgi">
-                    <h2>SGI</h2>
+                    <h1>SGI</h1>
                 </div>
             </div>
             <h1>Sistema Gerenciador de Inventário</h1>

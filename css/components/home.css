@@ -84,11 +84,20 @@
 .hm-left{
     border-left: 0.5rem solid #1BA1E2;
 }
+.hm-left h2{
+    color: #1BA1E2;
+}
 .hm-center{
     border-left: 0.5rem solid #0050EF;
 }
+.hm-center h2{
+    color: #0050EF;
+}
 .hm-right{
     border-left: 0.5rem solid #6A00FF;
+}
+.hm-right h2{
+    color: #6A00FF;
 }
 
 :root{
