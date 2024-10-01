@@ -1,10 +1,9 @@
 <?php
-session_start(); // Certifique-se de iniciar a sessão
+session_start();
 
-require 'conexao.php'; // Conexão com o banco de dados
-require 'Usuario.class.php'; // Importando a classe Usuario
+require 'conexao.php';
+require 'Usuario.class.php';
 
-// Criação da instância da classe Usuario passando a conexão
 $u = new Usuario($pdo);
 
 if (isset($_POST['email']) && !empty($_POST['email']) && isset($_POST['senha']) && !empty($_POST['senha'])) {
