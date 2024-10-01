@@ -57,11 +57,15 @@ $_SESSION['csrf_token_time'] = time();
             <div class="card_group btn">
                 <button type="submit">ACESSAR</button>
             </div>
-            <?php if(isset($_GET['error']) && $_GET['error'] == 1): ?>
-                <div class="error-message">
-                    <p> Usuário ou senha incorretos. Tente novamente.</p>
-                </div>
-            <?php endif; ?>
+            <?php
+                if (isset($_POST['error']) && $_POST['error'] == 1) {
+                   echo '<div class="error-message">Usuário ou senha inválidos.</div>';
+                }else if (isset($_POST['error']) && $_POST['error'] == 2) {
+                    echo '<div class="error-message">Ocorreu um erro de login.</div>';
+                }else if (isset($_POST['error']) == 3) {
+                    echo '<div class="error-message">Sua conta está desativada.</div>';
+                }
+            ?>
         </div>
     </form>
 </body>
