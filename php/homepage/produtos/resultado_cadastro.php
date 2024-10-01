@@ -17,15 +17,26 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
             $produto = $_POST['produto'];
             $marca = $_POST['marca'];
 
-            $sql = "INSERT INTO `produtos`(`produto`, `marca`) VALUES ('$produto','$marca')";
-        
-            $sql = $pdo->prepare($sql);
+            $sql_select = "SELECT * FROM produtos WHERE produto = :produto AND marca = :marca";
+            $sql_select = $pdo->prepare($sql_select);
+            $sql_select->execute([':produto' => $produto, ':marca' => $marca]);
 
-            if($sql->execute()){
-                echo '<div class="message__success">' . "$produto" . ' cadastrado com sucesso! </div>';
-            }else{
-                echo '<div class="message__error">' . "$produto" . ' NÃO foi cadastrado! </div>';
+            if($sql_select->rowCount() > 0){
+                echo '<div class="message__error">Produto ' . htmlspecialchars($produto) . ', marca ' . htmlspecialchars($marca) . ' já foi cadastrado! </div>';
             }
+            else{
+                $sql = "INSERT INTO `produtos`(`produto`, `marca`,`situacao`) VALUES ('$produto','$marca','0')";
+        
+                $sql = $pdo->prepare($sql);
+    
+                if($sql->execute()){
+                    echo '<div class="message__success">' . htmlspecialchars($produto) . ' cadastrado com sucesso! </div>';
+                }else{
+                    echo '<div class="message__error">' . htmlspecialchars($produto) . ' NÃO foi cadastrado! </div>';
+                }
+            }
+
+
         ?>
     </section>
     <div class="div__btn">

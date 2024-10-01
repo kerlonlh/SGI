@@ -16,17 +16,17 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
 
         include $_SERVER['DOCUMENT_ROOT'] . "/sgi/php/conexao.php";
 
-        $sql = "SELECT * FROM produtos WHERE (id LIKE :pesquisa OR produto LIKE :pesquisa OR marca LIKE :pesquisa) AND (situacao = 0)";
+        $sql = "SELECT * FROM produtos WHERE (id LIKE :pesquisa OR produto LIKE :pesquisa OR marca LIKE :pesquisa) AND (situacao = 1)";
 
         $dado = $pdo->prepare($sql);
         $dado->execute([':pesquisa' => "%$pesquisa%"]);
     ?>
     <section class="section__top">
-        <form class="section__form" action="index.php?pg=produtos" method="POST">
+        <form class="section__form" action="index.php?pg=produtos-inativos" method="POST">
             <input type="search" placeholder="Pesquisar produto" name="buscar" autofocus>
             <button class="btn" type="submit">Pesquisar</button>
         </form>
-        <a href="index.php?pg=produtos-inativos"><button class="btn">Produtos inativos</button></a>
+        <a href="index.php?pg=produtos"><button class="btn">Produtos ativos</button></a>
         <a href="index.php?pg=cadastrar-produtos"><button class="btn">Cadastrar novo produto</button></a>
         <a href="index.php?pg=home"><button class="btn">Página inicial</button></a>
     </section>
@@ -37,8 +37,7 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
                     <th class="mw1">Código</th>
                     <th class="mw5">Produto</th>
                     <th class="mw5">Marca</th>
-                    <th class="mw1">Editar</th>
-                    <th class="mw1">Inativar</th>
+                    <th class="mw1">Ativar</th>
                 </tr>
             </thead>
             <tbody>
@@ -52,18 +51,7 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
                                 <th class='mw1'>$id</th>
                                 <td class='mw5'>$produto</td>
                                 <td class='mw5'>$marca</td>
-                                <td class='mw1'>
-                                    <form action='index.php?pg=editar-produtos' method='POST'>
-                                        <input type='hidden' name='id' value='$id'>
-                                        <button class='btn-edit' type='submit'>Editar</button>
-                                    </form>
-                                </td class='mw1'>
-                                <td class='mw1'>
-                                    <form action='index.php?pg=inativar-produtos' method='POST'>
-                                        <input type='hidden' name='id' value='$id'>
-                                        <button class='btn-exclude' type='submit'>Inativar</button>
-                                    </form>
-                                </td class='mw1'>
+                                <td><a href='#'><button class='btn-exclude' type='submit'>Ativar</button></a></td>
                             </tr>";
                     }
                 ?>
