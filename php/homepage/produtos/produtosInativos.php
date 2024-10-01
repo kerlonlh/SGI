@@ -51,7 +51,11 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
                                 <th class='mw1'>$id</th>
                                 <td class='mw5'>$produto</td>
                                 <td class='mw5'>$marca</td>
-                                <td><a href='#'><button class='btn-exclude' type='submit'>Ativar</button></a></td>
+                                <td>
+                                    <form action='index.php?pg=ativar-produtos' method='POST'>
+                                    <input type='hidden' name='id' value='$id'>
+                                    <button class='btn-edit' type='submit'>Ativar</button>
+                                    </form>
                             </tr>";
                     }
                 ?>

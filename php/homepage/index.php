@@ -63,6 +63,8 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
             case 'produtos-inativos': require './produtos/produtosInativos.php'; break;
             case 'inativar-produtos': require './produtos/inativarProdutos.php'; break;
             case 'resultado-inativacao-produtos': require './produtos/resultadoInativacaoProdutos.php'; break;
+            case 'ativar-produtos': require './produtos/ativarProdutos.php'; break;
+            case 'resultado-ativacao-produtos': require './produtos/resultadoAtivacaoProdutos.php'; break;
             //Entradas
             case 'entradas': require './entradas/entradas.php'; break;
             case 'cadastrar-entrada-produtos': require './entradas/cadastro_entrada.php'; break;
