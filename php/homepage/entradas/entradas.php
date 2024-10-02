@@ -68,7 +68,6 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
                     <th class="mw2">ID fornecedor</th>
                     <th>Fornecedor</th>
                     <th class="mw1">Editar</th>
-                    <th class="mw1">Excluir</th>
                 </tr>
             </thead>
             <tbody>
@@ -113,15 +112,12 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
                                         <button class='btn-edit'type='submit'>Editar</button>
                                     </form>
                                 </td>
-                                <td><a href='#'><button class='btn-exclude' type='submit'>Excluir</button></a></td>
                             </tr>";
                     }
                 ?>
-                
             </tbody>
         </table>
     </div>
-    
 </body>
 </html>
 

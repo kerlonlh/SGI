@@ -47,7 +47,7 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
                     ':data_entrada' => $data_entrada, 
                     ':id_fornecedor' => $id_fornecedor, 
                     ':id_entrada_produtos' => $id_entrada])){
-                        echo '<div class="message__success">' . "$produto" . ' atualizado a entrada no estoque com sucesso! </div>';
+                        echo '<div class="message__success">' . "$produto" . ' foi atualizado na entrada do estoque com sucesso! </div>';
                 } else {
                     echo '<div class="message__error">' . "$produto" . ' NÃO foi atualizado no estoque! </div>';
                 }
@@ -59,7 +59,6 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
     <div class="div__btn">
         <a href="index.php?pg=entradas"><button class="btn">VISUALIZAR ENTRADAS</button></a>
     </div>
-   
 </body>
 </html>
 
