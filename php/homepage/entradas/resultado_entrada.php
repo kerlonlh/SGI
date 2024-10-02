@@ -24,13 +24,10 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
             $estoque = $_POST['quantidade'];
             $id_fornecedor = $_POST['id_fornecedor'];
 
-
             $sql_select = "SELECT situacao FROM produtos WHERE id = :id_produto";
             $sql_select = $pdo->prepare($sql_select);
             $sql_select->execute([':id_produto' => $id_produto]);
             $resultado = $sql_select->fetch(PDO::FETCH_ASSOC);
-
-
 
             $sql_produto = "SELECT produto AS produto FROM entrada_produtos JOIN produtos ON entrada_produtos.id_produto = produtos.id WHERE entrada_produtos.id_produto = :id_produto";
     
