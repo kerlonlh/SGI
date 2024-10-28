@@ -24,33 +24,34 @@ if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])): ?>
             $estoque = $_POST['quantidade'];
             $id_fornecedor = $_POST['id_fornecedor'];
 
-            $sql_select = "SELECT situacao FROM produtos WHERE id = :id_produto";
+            $sql_select = "SELECT situacao, produto, id FROM produtos WHERE id = :id_produto";
             $sql_select = $pdo->prepare($sql_select);
             $sql_select->execute([':id_produto' => $id_produto]);
-            $resultado = $sql_select->fetch(PDO::FETCH_ASSOC);
+            $dado = $sql_select->fetch(PDO::FETCH_ASSOC);
 
-            $sql_produto = "SELECT produto AS produto FROM entrada_produtos JOIN produtos ON entrada_produtos.id_produto = produtos.id WHERE entrada_produtos.id_produto = :id_produto";
-    
-                $dado = $pdo->prepare($sql_produto);
-                $dado->execute([':id_produto' => $id_produto]);
-    
-                $resultado = $dado->fetch(PDO::FETCH_ASSOC);
-                $produto = $resultado['produto'];
-
-
-            if ($resultado = 0) {
-                $sql = "INSERT INTO `entrada_produtos`(`id_produto`, `preco_custo`, `preco_venda`, `data_fabricacao`, `data_validade`, `data_entrada`, `quantidade`, `estoque`, `id_fornecedor`) VALUES ('$id_produto','$preco_custo','$preco_venda','$data_fabricacao','$data_validade','$data_entrada','$quantidade','$estoque','$id_fornecedor')";
+            if($dado){
+                $situacao = $dado['situacao'];
+                $produto = $dado['produto'];
+                $id = $dado['id'];
+                
+                if ($situacao == 0) {
+                    $sql = "INSERT INTO `entrada_produtos`(`id_produto`, `preco_custo`, `preco_venda`, `data_fabricacao`, `data_validade`, `data_entrada`, `quantidade`, `estoque`, `id_fornecedor`) VALUES ('$id_produto','$preco_custo','$preco_venda','$data_fabricacao','$data_validade','$data_entrada','$quantidade','$estoque','$id_fornecedor')";
+            
+                    $sql = $pdo->prepare($sql);
         
-                $sql = $pdo->prepare($sql);
-    
-                    if($sql->execute()){
-                        echo '<div class="message__success">' . "$produto" . ' entrou no estoque com sucesso! </div>';
-                    }else{
-                        echo '<div class="message__error">' . "$produto" . ' NÃO entrou no estoque! </div>';
-                    }
-            }else {
-                echo '<div class="message__error">' . htmlspecialchars($produto) . ' está inativo, por esse motivo, não é possível realizar a entrada desse produto no estoque.</div>';
+                        if($sql->execute()){
+                            echo '<div class="message__success">' . "$produto" . ' entrou no estoque com sucesso! </div>';
+                        }else{
+                            echo '<div class="message__error">' . "$produto" . ' NÃO entrou no estoque! </div>';
+                        }
+                }else {
+                    echo '<div class="message__error">' . htmlspecialchars($produto) . ' está inativo, por esse motivo, não é possível realizar a entrada desse produto no estoque.</div>';
+                }
+            }else{
+                echo '<div class="message__error">Código do produto não foi localizado, verifique se existe seu cadastro';
             }
+
+
     
 
             ?>
