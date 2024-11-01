@@ -16,7 +16,7 @@ if (isset($_POST['email']) && !empty($_POST['email']) && isset($_POST['senha']) 
         $situacao = $u->verificaSituacao($email);
 
         if ($situacao == 0) {
-            header("Location: ./homepage/index.php");
+            header("Location: ./index.php");
         } else {
             echo '<form id="errorForm" action="../index.php" method="POST" style="display: none;"> <input type="hidden" name="error" value="3"> </form>';
             echo '<script>document.getElementById("errorForm").submit();</script>';

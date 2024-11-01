@@ -193,7 +193,6 @@ body{
 }
 .footer__content{
     display: block;
-    padding-top: 0.5rem;
 }
 .footer__content ul li{
     display: inline-block;
